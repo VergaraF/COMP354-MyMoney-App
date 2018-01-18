@@ -14,32 +14,41 @@ public class Panel extends JFrame {
     private JTextField userArea;
     private JTextField passwordArea;
     private JButton btn;
-
+    private JLabel user;
+    private JLabel pass;
+    
     public Panel() {
         super("Comp 354 App");
         setLayout(new GridBagLayout());
-        userArea = new JTextField("Username", 15);
-        passwordArea = new JTextField("Password", 15);
+        userArea = new JTextField("Enter your username", 15);
+        passwordArea = new JPasswordField("Password", 15);
         btn = new JButton("Log in");
+        user = new JLabel("Username");
+        pass = new JLabel("Password");
 
         GridBagConstraints gb = new GridBagConstraints();
 
         gb.gridx = 0;
         gb.gridy = 0;
-        gb.weightx = 1;
-        gb.weighty = 1;
-        gb.fill = GridBagConstraints.NONE;
-        gb.anchor = GridBagConstraints.LINE_END;
-        add(userArea, gb);
+        add(user, gb);
 
         gb.gridx = 1;
         gb.gridy = 0;
-        gb.anchor = GridBagConstraints.LINE_START;
-        add(passwordArea, gb);
-        
+        gb.weightx = 1;
+        gb.weighty = 1;
+        add(userArea, gb);
+
         gb.gridx = 2;
         gb.gridy = 0;
-        add(btn,gb);
+        add(pass, gb);
+
+        gb.gridx = 3;
+        gb.gridy = 0;
+        add(passwordArea, gb);
+
+        gb.gridx = 4;
+        gb.gridy = 0;
+        add(btn, gb);
         
         setSize(600, 500);
         setVisible(true);
