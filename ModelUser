@@ -1,1 +1,65 @@
+/**
+* A model user of the App.
+*/
+public class ModelUser {
+	
+	private String userName;
+	private String password;
+	private String inputFileName;
+	
+	
+public ModelUser(String userName, String password){
+	this.userName = userName;
+	this.password = password;
+	this.inputFileName = getUserDataFile(this.userName,this.password);
+		
+	}
+	
+/**
+ * Method returns the corresponding file name for user data.
+ * @param inputFileName
+ */
+	private String getUserDataFile(String username,String password) {
+		
+		String fileName =null;
+		
+		if(username.equals("userOne") && password.equals("userOne_password")){
+			
+			fileName= "userOne";
+			
+		}
+		
+		if(username.equals("userTwo") && password.equals("userTwo_password")){
+			
+			fileName= "userTwo";
+			
+		}
+		
+	
+	return fileName;
+}
+
+	public String getUserName() {
+		return userName;
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getInputFileName() {
+		return inputFileName;
+	}
+	
+	
+	public void setInputFileName(String inputFileName) {
+		this.inputFileName = inputFileName;
+	}
+
+}
 
