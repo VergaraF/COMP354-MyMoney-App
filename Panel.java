@@ -3,12 +3,16 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -24,10 +28,20 @@ public class Panel extends JFrame {
     private final JButton cancelBtn;
     private final JLabel user;
     private final JLabel pass;
+    private final JMenuBar menuBar;
+    private final JMenu menu;
+    private JMenuItem menuItem;
     private BufferedImage appIcon;
 
     public Panel() {
-        super("Budgeting App");
+        super("MyMoney");
+        
+        //Menu bar settings
+        menuBar = new JMenuBar();
+        menu = new JMenu("Registration");
+        menuBar.add(menu);
+        menuItem = new JMenuItem("Account registration", KeyEvent.VK_A);
+        menu.add(menuItem);
         
         //Buttons, text fields and icon settings
         appIcon = setIconImage(appIcon,"money.png");
@@ -53,6 +67,8 @@ public class Panel extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setIconImage(appIcon);
+        setJMenuBar(menuBar);
+        setResizable(false);
     }
 
     private void placeButtons() {
