@@ -1,4 +1,3 @@
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -29,7 +28,7 @@ public class Panel extends JFrame {
     private final JLabel user;
     private final JLabel pass;
     private final JMenuBar menuBar;
-    private final JMenu menu;
+    private JMenu menu;
     private JMenuItem menuItem;
     private BufferedImage appIcon;
 
@@ -38,10 +37,8 @@ public class Panel extends JFrame {
         
         //Menu bar settings
         menuBar = new JMenuBar();
-        menu = new JMenu("Registration");
-        menuBar.add(menu);
-        menuItem = new JMenuItem("Account registration", KeyEvent.VK_A);
-        menu.add(menuItem);
+        placeMenu(menuBar,menu,menuItem);
+        
         
         //Buttons, text fields and icon settings
         appIcon = setIconImage(appIcon,"money.png");
@@ -99,6 +96,23 @@ public class Panel extends JFrame {
         gb.gridx = 1;
         gb.gridy = 2;
         add(cancelBtn, gb);
+    }
+    
+    private void placeMenu(JMenuBar menuBar, JMenu menu, JMenuItem menuItem){
+        menu = new JMenu("Registration");
+        menuBar.add(menu);
+        menuItem = new JMenuItem("Account registration", KeyEvent.VK_A);
+        menu.add(menuItem);
+        
+        menu = new JMenu("Help");
+        menuBar.add(menu);
+        menuItem = new JMenuItem("Documentation", KeyEvent.VK_D);
+        menu.add(menuItem);
+        
+        menu = new JMenu("About");
+        menuBar.add(menu);
+        menuItem = new JMenuItem("MyMoney", KeyEvent.VK_M);
+        menu.add(menuItem);
     }
 
     private void closeOnCancelClick() {
