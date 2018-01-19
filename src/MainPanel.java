@@ -3,7 +3,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -21,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author Vincent
  */
-public class LogInPanel extends JFrame {
+public class MainPanel extends JFrame {
 
     private final JTextField userArea;
     private final JPasswordField passwordArea;
@@ -34,7 +33,7 @@ public class LogInPanel extends JFrame {
     private JMenuItem menuItem;
     private BufferedImage appIcon;
 
-    public LogInPanel() {
+    public MainPanel() {
         super("MyMoney");
 
         //Menu bar settings
@@ -48,7 +47,7 @@ public class LogInPanel extends JFrame {
         logInOnClick();
 
         cancelBtn = new JButton("Cancel");
-        closeOnCancelClick();
+        closeOnCancelClick(cancelBtn);
 
         user = new JLabel("Username");
         userArea = new JTextField("", 15);
@@ -118,8 +117,8 @@ public class LogInPanel extends JFrame {
         menu.add(menuItem);
     }
 
-    public final void closeOnCancelClick() {
-        cancelBtn.addActionListener((ActionEvent e) -> {
+    public final void closeOnCancelClick(JButton btn) {
+        btn.addActionListener((ActionEvent e) -> {
             dispose();
         });
     }
@@ -135,7 +134,7 @@ public class LogInPanel extends JFrame {
 
     private void logInOnClick() {
         logBtn.addActionListener((ActionEvent e) -> {
-            FinancePanel panel = new FinancePanel();
+            MainPanel panel = new FinancePanel();
             panel.setupForPanel();
             dispose();
         });

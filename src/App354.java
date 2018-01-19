@@ -12,7 +12,7 @@ public class App354 {
      */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            LogInPanel p = new LogInPanel();
+            MainPanel p = new MainPanel();
             p.setupForPanel();
         });
     }
