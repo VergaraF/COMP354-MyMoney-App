@@ -1,6 +1,4 @@
 /**
- * User objects can be made when someone creates an account
- * The setBankAccount method reads a file and stores the user's balance as a field
  *
  * @author Jean-Loup
  */
@@ -12,26 +10,66 @@ import java.util.Scanner;
 public class User {
 	private String password;
 	private String userName;
-	private double savings;
-	
-	//name of file with banking info
-	private String bankAccount;
 	
 	
+	
+	
+	public String displayTransactions()
+	{
+		Scanner s1 = null;
+		
+		try {
+			s1 = new Scanner(new FileInputStream("Transactions"));
+		}
+		catch(FileNotFoundException e){
+			System.out.print("file could not be found.");
+			
+		}
+		String transactions = "<html>";
+		
+		while(s1.hasNextLine())
+		{
+			transactions += s1.nextLine() + "<br>";
+		}
+	
+		s1.close();
+		
+		return transactions;
+	}
+	
+	public String displaySavings()
+	{
+	Scanner s1 = null;
+		
+		try {
+			s1 = new Scanner(new FileInputStream("Bank"));
+		}
+		catch(FileNotFoundException e){
+			System.out.print("file could not be found.");
+			
+		}
+		String savings = "";
+		
+		
+			savings = s1.next();
+		
+	
+		s1.close();
+		
+		return savings;
+	}
 	
 	public User()
 	{
 		password = "";
 		userName = "";
-		savings =0;
-		bankAccount = "";
+		
 	}
 	
-	public User(String password, String userName, double savings) {
+	public User(String password, String userName) {
 		super();
 		this.password = password;
 		this.userName = userName;
-		this.savings = savings;
 	}
 	public String getPassword() {
 		return password;
@@ -45,34 +83,12 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public double getSavings() {
-		return savings;
-	}
 	
 	
-	//when the bank account is set, it reads from the file and also sets the savings value;
-	public void setBankAccount(String BankAccount)
-	{
-		Scanner s1 = null;
-		
-		try {
-			s1 = new Scanner(new FileInputStream(bankAccount));
-		}
-		catch(FileNotFoundException e){
-			System.out.print("file could not be found.");
-			
-		}
-		String savingsString = s1.next();
-		double savings1 = Double.parseDouble(savingsString);
-		
-		savings = savings1;
-		
-	}
 	
-	public String getBankAccount()
-	{
-		return bankAccount;
-	}
+	
+	
+	
 	
 	
 	
