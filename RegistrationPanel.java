@@ -1,4 +1,3 @@
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -6,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -19,26 +16,25 @@ import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Vincent
- */
-public class MainPanel extends JFrame {
+public class RegistrationPanel extends JFrame {
 
-	private final JTextField userArea;
-	private final JPasswordField passwordArea;
-	private final JButton logBtn;
-	private final JButton cancelBtn;
-	private final JLabel user;
-	private final JLabel pass;
-	private JLabel message;
-	private final JMenuBar menuBar;
+	private JTextField userArea;
+	private JPasswordField passwordArea;
+	private JPasswordField confirmPWDArea;
+	private JButton registerBtn;
+	private JButton cancelBtn;
+	private JLabel user;
+	private JLabel pass;
+	private JLabel confirmPWD;
+	private JLabel msgBoard;
+	private JMenuBar menuBar;
 	private JMenu menu;
 	private JMenuItem menuItem;
 	private BufferedImage appIcon;
-	private static int loginCount = -1;
+	private MainPanel mP = new MainPanel();
+	
 
-	public MainPanel() {
+	public RegistrationPanel() {
 		super("MyMoney");
 
 		// Menu bar settings
@@ -48,8 +44,9 @@ public class MainPanel extends JFrame {
 		// Buttons, text fields and icon settings
 		appIcon = chooseIconImage(appIcon, "money.png");
 
-		logBtn = new JButton("Log in");
-		logInOnClick();
+		registerBtn = new JButton("Register Account");
+
+		registerOnClick();
 
 		cancelBtn = new JButton("Cancel");
 		closeOnCancelClick(cancelBtn);
@@ -59,9 +56,9 @@ public class MainPanel extends JFrame {
 
 		pass = new JLabel("Password");
 		passwordArea = new JPasswordField("", 15);
-
-		message = new JLabel("Login or Create an account");
-
+		confirmPWD = new JLabel("Confirm PWD");
+		confirmPWDArea = new JPasswordField("", 15);
+		msgBoard = new JLabel("");
 	}
 
 	public void setupForPanel() {
@@ -74,6 +71,7 @@ public class MainPanel extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(appIcon);
 		setJMenuBar(menuBar);
+		setResizable(true);
 		setVisible(true);
 	}
 
@@ -96,19 +94,27 @@ public class MainPanel extends JFrame {
 		gb.gridy = 1;
 		add(passwordArea, gb);
 
-		gb.insets = new Insets(10, 0, 0, 0);
 		gb.gridx = 0;
 		gb.gridy = 2;
-		add(logBtn, gb);
+		add(confirmPWD,gb);
 
-		gb.insets = new Insets(10, 0, 0, -95);
 		gb.gridx = 1;
 		gb.gridy = 2;
-		add(cancelBtn, gb);
+		add(confirmPWDArea,gb);
 
+		gb.insets = new Insets(10, 10, 10, 10);
 		gb.gridx = 0;
 		gb.gridy = 3;
-		add(message, gb);
+		add(registerBtn, gb);
+
+		gb.insets = new Insets(10, 10, 10, 10);
+		gb.gridx = 1;
+		gb.gridy = 3;
+		add(cancelBtn, gb);
+		
+		gb.gridx =3;
+		gb.gridy = 6;
+		add(msgBoard);
 	}
 
 	private void placeMenu(JMenuBar menuBar, JMenu menu, JMenuItem menuItem) {
@@ -120,10 +126,10 @@ public class MainPanel extends JFrame {
 
 			public void actionPerformed(ActionEvent e) {
 
-				// Code for registration menuAction
-				RegistrationPanel regPanel = new RegistrationPanel();
-				regPanel.setupForPanel();
-
+				// Menu item click logic!
+				
+				
+			
 			}
 		});
 
@@ -155,60 +161,66 @@ public class MainPanel extends JFrame {
 		return icon;
 	}
 
-	private void logInOnClick() {
+	/**
+	 * Method handles the onclickEvent of the registration button.
+	 */
+	private void registerOnClick() {
+		registerBtn.addActionListener((ActionEvent e) -> {
 
-		logBtn.addActionListener((ActionEvent e) -> {
-			MainPanel panel = new BankPanel();
-			// this.dispose();
+			String username = userArea.getText();
+			String password = passwordArea.getText();
+			String confirmPassword = confirmPWDArea.getText();
 
-			if (LogIn.validateUser(sendUserName(), sendUserPassword())) {
+			if (!(username.equals("") || password.equals("") ||confirmPassword.equals(""))) {
+				
+				//Check if the passwords match.
+				if (password.equals(confirmPassword)) {
 
-				panel.setupForPanel();
-				userArea.setText("");
-				passwordArea.setText("");
-				loginCount =-1;
+					// Check if user exist already.
+					if (!LogIn.validateUser(username, password)) {
+						
+						//Add user login to log_in file
+						LogIn.recordNewUser(username, password);
+						
+						this.dispose();
+						mP.setupForPanel();
+						mP.setMessage("Account created. Please, login");
 
-			}
-			else{
-				//Maximum number of login attempts is 3
-				if (loginCount < 4) {
-					setMessage("Username and password did not match! Try again");
+					} else {
 
-				} else {
-
-					setMessage("Too many login attempts! Exiting!!");
-
-					try {
-						Thread.sleep(5000);
-
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						// Notify: Passwords do not match!!
+						setupForPanel();
+						msgBoard.setText("Username not available!");
 					}
 
-					this.dispose();
-
+				}
+				else{
+					//Display on error panel
+					
+					setupForPanel();
+					msgBoard.setText("Passwords did not match! Please, try again.");
 				}
 			}
-
+			else{
+				//Display on error panel
+				setupForPanel();
+			msgBoard.setText("Please, enter username and password.");
+			}
+			// MainPanel panel = new FinancePanel();
+			// panel.setupForPanel();
+			//this.dispose();
 		});
-		// Count the number of login attempts.
-		loginCount++;
 	}
 
 	public String sendUserName() {
 
-		return userArea.getText();
+		return userArea.toString();
 	}
 
 	public String sendUserPassword() {
 
-		return passwordArea.getText();
+		return passwordArea.toString();
 	}
-
-	// Method sets a directive message on the message board panel
-	public void setMessage(String text) {
-		message.setText(text);
-	}
-
+	
+	
 }

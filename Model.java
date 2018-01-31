@@ -125,9 +125,18 @@ public class Model {
 	 * @param inputFileName
 	 */
 	private String getUserDataFile(String username, String password) {
+		String fileName = "";
 
-		String fileName = "..//datafiles//default";
+		if (LogIn.validateUser(username, password)) {
+			
+			fileName = "..//datafiles//default";
+		}
+		else{
+			
+			fileName = "..//datafiles//user_not_found";
+		}
 
+		/**
 		if (username.equals("userOne") && password.equals("userOne_password")) {
 
 			fileName = "userOne";
@@ -139,6 +148,7 @@ public class Model {
 			fileName = "userTwo";
 
 		}
+		*/
 
 		return fileName;
 	}

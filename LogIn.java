@@ -1,81 +1,98 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-/**
- *
- * @author Kisife
- */
 
 public class LogIn {
-	
-	private static ArrayList<String> login_info= new ArrayList<String>();
-	private Scanner scan;
-	FileWriter writer;
-	
+
+	private static ArrayList<String> login_info = new ArrayList<String>();
+	private static FileWriter writer;
+	private static boolean loggedIn=false;
+
 	/**
 	 * Adds user login info to arrayList.
+	 * 
 	 * @param string
 	 */
-	public void recordNewUser(String username, String password){
+	public static void recordNewUser(String username, String password) {
+
+		// Check if this user name and password combination already exist.
+		// if (!validateUser(username, password)) {
+
+		String newUserInfo = username + "::" + password;
+
+		// Add user details to array list.
+		login_info.add(newUserInfo);
+
+		// write user details to file.
+		saveUserInfo(newUserInfo);
+
+		// }
 		
-		String savedInfo = username+"::"+password;
-		
-		login_info.add(savedInfo);
-		
+		//Set logIn status to true.
+		loggedIn=true;
+
 	}
-	
+
 	/**
 	 * Method writes user login info to file.
 	 */
-	public void saveUserInfo(){
-		
+	public static void saveUserInfo(String userInfo) {
+
 		try {
-			writer = new FileWriter("login_info");
-			
-			for(String s:login_info){
-				
-				writer.write(s);
+			writer = new FileWriter("..//datafiles//login_info", true);
+			if (userInfo != "") {
+				writer.write("\n" + userInfo);
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	}
-	
-	/**
-	 * Method reads user login info from file and save in array list for look up.
-	 */
-	public void readUserInfor(){
-		
-		try {
-			scan = new Scanner(new File("login_info"));
-			
-			while(scan.hasNextLine()){
-				
-				login_info.add(scan.next());
-				
+		} finally {
+			try {
+				writer.flush();
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+
 		}
 	}
-	
+
+	/**
+	 * Method reads user login info from file and save in array list for look
+	 * up.
+	 */
+
+	public static void readUserInfo() {
+		String lineString = "";
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader("..//datafiles//login_info"));
+			while ((lineString = reader.readLine()) != null) {
+				login_info.add(lineString);
+
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+	}
+
 	/**
 	 * 
-	 * @param userLogin user login info.
+	 * @param userLogin
+	 *            user login info.
 	 * @return true if user info exist in file else false.
 	 */
-	public boolean validateUser(String username, String password){
-		
-		String savedInfo = username+"::"+password;
-		
+	public static boolean validateUser(String username, String password) {
+
+		String savedInfo = username + "::" + password;
+
 		return login_info.contains(savedInfo);
 	}
-	
 
 }
