@@ -21,15 +21,14 @@ public class BankPanel extends MainPanel {
     private final JLabel Transactions;
     private final JLabel TransactionsInfo;
     
-    User u = new User();
 
     public BankPanel() {
         appIcon = chooseIconImage(appIcon, "money.png");
         bankInfo = new JLabel("Banking Information");
         Savings = new JLabel("<HTML><U>Savings</U></HTML>");
-        SavingsInfo = new JLabel(u.displaySavings());
+        SavingsInfo = new JLabel(Model.displaySavings());
         Transactions = new JLabel("<HTML><U>Transactions</U></HTML>");
-        TransactionsInfo = new JLabel(u.displayTransactions());
+        TransactionsInfo = new JLabel(Model.displayTransactions());
         clsButton = new JButton("Exit");
         closeOnCancelClick(clsButton);
     }
