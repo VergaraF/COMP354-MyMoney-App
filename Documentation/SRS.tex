@@ -1,0 +1,114 @@
+\documentclass[letterpaper]{article}
+
+\title{Software Requirements Specification} 
+
+\author{
+	Vincent Boivin, ID 00000000 \and
+	Kisife Giles, ID 00000000 \and
+	Marc-Antoine Jette-Leger, ID 27895038 \and
+	Jean-Loup Johnston, ID 00000000 \and
+	Fabian Vergara, ID 00000000 \and
+	Michael Xu, ID 27206356
+}
+
+\begin{document}
+	
+\maketitle
+
+\newpage
+
+\section{Revision History}
+
+	...
+	
+\newpage
+
+\tableofcontents
+
+\newpage
+	
+\section{Project Description}
+
+	\subsection{Introduction}
+	
+		The primary goal of this project is to develop a program to manage one’s own finances to satisfy a targeted savings amount. Using this program, the users can obtain critical information about their spending and make better, educated decisions one how to manage their finances.
+	
+	\subsection{Context}
+	
+		In the context of this project, the user (targeted consumer base) will be young adults. 
+	
+	\subsection{Business goals}
+	
+		The primary business goal is to make our customers save more and to make them adopt our software applications, which will allow us to provide a better service as a more well rounded financial company. This in turn allows us to increase efficiency (needs less employees to serve customers on the same topic), increase our market share, as we did not have this service beforehand which will in turn increase our profit margin because we have access to more customers than before.
+	
+	\subsection{Scope}
+	
+		The MyMoneyApp software is a financial management application, developed in Java as a standalone desktop application targeting young consumers. This system’s aim is to help users to make wise and accurate decisions when they have a target amount of savings they want to have for a month. It performs this operation by first getting the user’s bank statement, then displaying them on-screen to differentiate what amount of money has went into what type of service, and to then be able to change those amounts in the coming months. The main qualities of MyMoneyApp, is that it is easy-of-use, user-friendly and efficient, which will allow the purchasing company to satisfy its customers’ needs. All in all, this software will help the company to hold its market leader position in the financial domain.
+	
+	\subsection{Domain model}
+	
+		...
+	
+	\subsection{Actors}
+	
+		This document is intended to be read by:
+		
+		\begin{itemize}
+			
+			\item Users of the software: this document allows them to have a more complete idea about the system and its functionalities.
+			
+			\item Team developers: they can use this document as a primary resource for all subsequent project development phases (design, coding, testing and maintenance phases).
+			
+			\item Testers: To be able to test the system in accordance to the specified requirements.
+			
+			\item CEO of the company that has hired us: this document will allow them to deeper understand and have a more comprehensive idea about the requirements of the project.
+			
+		\end{itemize}
+
+\section{Functional requirements}
+
+	\subsection{Overview}
+	
+		This section includes all the details regarding the use cases and features afforded to the user of the MyMoney application. Those features include creating and logging into an account, accessing various information about the transactions made with a bank account, and creating, inspecting and deleting budgetary goals to be stored in a list.
+	
+	\subsection{Use cases}
+	
+		\subsubsection{Create and access user accounts}
+		
+			...
+		
+		\subsubsection{Load and display transactions data}
+		
+			...
+		
+		\subsubsection{Set budgetary objectives}
+		
+			...
+	
+	\subsection{Business Rules}
+	
+		...
+		
+\section{Non-functional requirements}
+
+	...
+
+\section{Design Constraints}
+
+	The programming language used in this software is Java. The main feature is giving a clear representation of the user’s spending over the course of a bank statement. The representation will take the form of graphs and charts defining where their money went. Users can only view their past data and cannot alter it. The maintenance and feature upgrades are handled by us, the developers of MyMoneyApp.
+
+\section{Glossary}
+
+	\paragraph{Transaction}
+	
+		A transaction summarizes a positive or negative money transaction made by the user in real life and is composed of the amount of money exchanged during the transaction, the date when the transaction was made, the business the transaction was completed with, and the category which the transaction relate to (e.g. food, home, transportation, salary, ...)
+	
+	\paragraph{Budgetary objective}
+	
+		A budgetary objective represents a goal that the user wishes to aim towards in term of money saving. An objective tracks how much money was spent on what category or categories of goods and services in a set amount of time and compares it with a set goal. A budgetary objective is considered a success if the amount of money spent in the tracked amount of time on the tracked objective is smaller than the set goal. It is tagged as “In progress” if the period of time tracked includes the current date. It is considered a failure otherwise.
+
+\section{References}
+
+	...
+	
+\end{document}
