@@ -1,4 +1,10 @@
 \documentclass[letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabu}
+
 
 \title{Software Requirements Specification} 
 
@@ -75,12 +81,88 @@
 	
 		\subsubsection{Create and access user accounts}
 		
-			...
-		
+        \begin{center}
+        \begin{tabular}{ | m{5cm} | m{10cm}| } 
+            \hline
+            \textbf{Action} & Create user account \\ 
+            \hline
+            \textbf{Case ID} & 01 \\ 
+            \hline
+            \textbf{Summary} & User provides the necessary information for the creation of an account. \\
+            \hline
+            \textbf{Scope} & Budget management application \\ 
+            \hline
+            \textbf{Trigger} & Registration button \\
+            \hline
+            \textbf{Precondition} & None \\ 
+            \hline
+            \textbf{Postcondition} & Account is created \\ 
+            \hline
+            \textbf{Primary Actor} & User \\ 
+            \hline
+            \textbf{Secondary Actor} & Filesystem \\ 
+            \hline
+            \textbf{Main Scenario-Step} & \textbf{Action} \\ 
+            \hline
+            1 & User Clicks on Register. \\ 
+            \hline
+            2 & User enters a username, password, and password confirmation, and click “create account” button. \\ 
+            \hline
+            3 & System verifies if the username is already taken. \\ 
+            \hline
+            4 & System gets login credentials from File System. \\ 
+            \hline
+            5 & System verifies in login file if the password and password confirmation are the same. \\ 
+            \hline
+            6 & System creates account object. \\ 
+            \hline
+            7 & System saves the username and password combination to the database/textpad. \\
+            \hline
+            8 & System displays login menu, with account creation confirmation, and asks user to login. \\ 
+            \hline
+            9 & System goes idle. \\ 
+            \hline
+        \end{tabular}
+        \end{center}
+
 		\subsubsection{Load and display transactions data}
 		
-			...
-		
+		\begin{center}
+        \begin{tabular}{ | m{5cm} | m{10cm}| } 
+            \hline
+            \textbf{Action} & Load and display transaction data \\ 
+            \hline
+            \textbf{Case ID} & 02 \\ 
+            \hline
+            \textbf{Summary} & User provides the the number of his credit card number for the reviewing of his spending. \\
+            \hline
+            \textbf{Scope} & Budget management application \\ 
+            \hline
+            \textbf{Trigger} & Get my info button \\
+            \hline
+            \textbf{Precondition} & To be logged in as a user \\ 
+            \hline
+            \textbf{Postcondition} & Transaction data is displayed \\ 
+            \hline
+            \textbf{Primary Actor} & User \\ 
+            \hline
+            \textbf{Secondary Actor} & Filesystem \\ 
+            \hline
+            \textbf{Main Scenario-Step} & \textbf{Action} \\ 
+            \hline
+            1 & User Enters his credit card number. \\ 
+            \hline
+            2 & User clicks on the get transaction data button. \\ 
+            \hline
+            3 & System pulls the information from the textpad/database. \\ 
+            \hline
+            4 & Transaction data is displayed on the screen. \\ 
+            \hline
+            5 & System goes idle. \\ 
+            \hline
+        \end{tabular}
+        \end{center}
+        
 		\subsubsection{Set budgetary objectives}
 		
 			...
