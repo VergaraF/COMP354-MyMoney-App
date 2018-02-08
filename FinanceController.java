@@ -16,23 +16,23 @@ import org.knowm.xchart.XChartPanel;
  */
 public class FinanceController {
 
-    private float homeSpending = 0;
-    private float foodSpending = 0;
-    private float hobbiesSpending = 0;
-    private float savingsSpending = 0;
-    private float otherSpending = 0;
-    private float homeBudget = 0;
-    private float foodBudget = 0;
-    private float hobbiesBudget = 0;
-    private float savingsBudget = 0;
-    private float otherBudget = 0;
-    public float totalBudget = 0;
-    public float totalSpending = 0;
-    private final JFrame budgetChartFrame = new JFrame("Budget Chart");
-    private final JFrame spendingsChartFrame = new JFrame("Spendings Chart");
-    private FinancePanel fp = new FinancePanel();
+    private static float homeSpending = 0;
+    private static float foodSpending = 0;
+    private static float hobbiesSpending = 0;
+    private static float savingsSpending = 0;
+    private static float otherSpending = 0;
+    private static float homeBudget = 0;
+    private static float foodBudget = 0;
+    private static float hobbiesBudget = 0;
+    private static float savingsBudget = 0;
+    private static float otherBudget = 0;
+    public static float totalBudget = 0;
+    public static float totalSpending = 0;
+    private static final JFrame budgetChartFrame = new JFrame("Budget Chart");
+    private static final JFrame spendingsChartFrame = new JFrame("Spendings Chart");
+    private static FinancePanel fp = new FinancePanel();
 
-    public void setup() {
+    public static void setup() {
         fp.setupForPanel();
         getBudgetDropInfo();
         getSpendingDropInfo();
@@ -42,7 +42,7 @@ public class FinanceController {
         resetSpendings();
     }
 
-    public void resetBudget() {
+    public static void resetBudget() {
         fp.resetBudget.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +62,7 @@ public class FinanceController {
         });
     }
 
-    public void resetSpendings() {
+    public static void resetSpendings() {
         fp.resetSpendings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class FinanceController {
         });
     }
 
-    public void createBudgetChart() {
+    public static void createBudgetChart() {
         fp.makeChart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -101,7 +101,7 @@ public class FinanceController {
         });
     }
 
-    public void createSpendingsChart() {
+    public static void createSpendingsChart() {
         fp.makeChart2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,7 +119,7 @@ public class FinanceController {
         });
     }
 
-    public void getBudgetDropInfo() {
+    public static void getBudgetDropInfo() {
         fp.addToBudget.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,7 +169,7 @@ public class FinanceController {
         });
     }
 
-    public void getSpendingDropInfo() {
+    public static void getSpendingDropInfo() {
         fp.addToSpendings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
