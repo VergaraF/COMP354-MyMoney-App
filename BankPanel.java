@@ -2,6 +2,7 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JButton;
@@ -14,6 +15,8 @@ import javax.swing.JTextField;
  */
 public class BankPanel extends MainPanel {
 	private JButton clsButton;
+	private JButton budgetButton;
+	
     private BufferedImage appIcon;
     private final JLabel bankInfo;
     private final JLabel Savings;
@@ -30,15 +33,26 @@ public class BankPanel extends MainPanel {
         Transactions = new JLabel("<HTML><U>Transactions</U></HTML>");
         TransactionsInfo = new JLabel(Model.displayTransactions());
         clsButton = new JButton("Exit");
+        budgetButton = new JButton("Budget");
         closeOnCancelClick(clsButton);
+        goToBudget(budgetButton);
+        
+        
     }
+    
+    public final void goToBudget(JButton btn) {
+		btn.addActionListener((ActionEvent e) -> {
+			FinanceController.setup();
+
+		});
+	}
     
     
 
     @Override
     public void setupForPanel() {
     	
-        setSize(600, 500);
+        setSize(800, 800);
         setResizable(false);
         setVisible(true);
         setLayout(new GridBagLayout());
@@ -102,10 +116,20 @@ public class BankPanel extends MainPanel {
         gb.anchor = GridBagConstraints.NORTH;
         gb.weighty = 3; 
         gb.insets = new Insets(5, 5, 5, 5);
-        gb.gridx = 2;
+        gb.gridx = 1;
         gb.gridwidth = 3;
         gb.gridy = 3;
         add(clsButton, gb);
+        
+        gb.anchor = GridBagConstraints.NORTH;
+        gb.weighty = 3; 
+        gb.insets = new Insets(5, 5, 5, 5);
+        gb.gridx = 3;
+        gb.gridwidth = 3;
+        gb.gridy = 3;
+        add(budgetButton, gb);
+        
+        setResizable(true);
     }
 
 }
