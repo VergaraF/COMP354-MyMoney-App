@@ -1,3 +1,8 @@
+
+/**
+ * This is a GUI class for user registration. It provides a view for user
+ * interaction during registration.
+ */
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -32,7 +37,6 @@ public class RegistrationPanel extends JFrame {
 	private JMenuItem menuItem;
 	private BufferedImage appIcon;
 	private MainPanel mP = new MainPanel();
-	
 
 	public RegistrationPanel() {
 		super("MyMoney");
@@ -67,7 +71,7 @@ public class RegistrationPanel extends JFrame {
 		placeButtons();
 
 		// Panel settings
-		setSize(800, 800);
+		setSize(900, 900);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(appIcon);
 		setJMenuBar(menuBar);
@@ -96,11 +100,11 @@ public class RegistrationPanel extends JFrame {
 
 		gb.gridx = 0;
 		gb.gridy = 2;
-		add(confirmPWD,gb);
+		add(confirmPWD, gb);
 
 		gb.gridx = 1;
 		gb.gridy = 2;
-		add(confirmPWDArea,gb);
+		add(confirmPWDArea, gb);
 
 		gb.insets = new Insets(10, 10, 10, 10);
 		gb.gridx = 0;
@@ -111,8 +115,8 @@ public class RegistrationPanel extends JFrame {
 		gb.gridx = 1;
 		gb.gridy = 3;
 		add(cancelBtn, gb);
-		
-		gb.gridx =3;
+
+		gb.gridx = 3;
 		gb.gridy = 6;
 		add(msgBoard);
 	}
@@ -127,9 +131,7 @@ public class RegistrationPanel extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				// Menu item click logic!
-				
-				
-			
+
 			}
 		});
 
@@ -171,17 +173,17 @@ public class RegistrationPanel extends JFrame {
 			String password = passwordArea.getText();
 			String confirmPassword = confirmPWDArea.getText();
 
-			if (!(username.equals("") || password.equals("") ||confirmPassword.equals(""))) {
-				
-				//Check if the passwords match.
+			if (!(username.equals("") || password.equals("") || confirmPassword.equals(""))) {
+
+				// Check if the passwords match.
 				if (password.equals(confirmPassword)) {
 
 					// Check if user exist already.
 					if (!LogIn.validateUser(username, password)) {
-						
-						//Add user login to log_in file
+
+						// Add user login to log_in file
 						LogIn.recordNewUser(username, password);
-						
+
 						this.dispose();
 						mP.setupForPanel();
 						mP.setMessage("Account created. Please, login");
@@ -193,24 +195,24 @@ public class RegistrationPanel extends JFrame {
 						msgBoard.setText("Username not available!");
 					}
 
-				}
-				else{
-					//Display on error panel
-					
+				} else {
+					// Display on error panel
+
 					setupForPanel();
 					msgBoard.setText("Passwords did not match! Please, try again.");
 				}
-			}
-			else{
-				//Display on error panel
+			} else {
+				// Display on error panel
 				setupForPanel();
-			msgBoard.setText("Please, enter username and password.");
+				msgBoard.setText("Please, enter username and password.");
 			}
 			// MainPanel panel = new FinancePanel();
 			// panel.setupForPanel();
-			//this.dispose();
+			// this.dispose();
 		});
 	}
+	
+	//These methods pass over user information for validation andrecording
 
 	public String sendUserName() {
 
@@ -221,6 +223,6 @@ public class RegistrationPanel extends JFrame {
 
 		return passwordArea.toString();
 	}
-	
-	
+
 }
+

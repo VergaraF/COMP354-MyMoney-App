@@ -1,28 +1,21 @@
-
-
-import javax.swing.SwingUtilities;
-
 /**
  *
- * @author Vincent
+ * COMP 354 Project
+ * Group PJ-A
  */
+
 public class App354 {
 
-    /**
-     * @param args the command line arguments
-     */
-	
-	
-    public static void main(String[] args) {
-    	
-    	MyMoneyController.controller();
-    	
-    	/**
-        SwingUtilities.invokeLater(() -> {
-            MainPanel p = new MainPanel();
-            p.setupForPanel();
-        });
-        */
-    }
+	public static void main(String[] args) {
+
+		MyMoneyController.controller();
+
+		// Test methods/cases for the LogIn class.
+		LogInTest lt = new LogInTest();
+		lt.testValidateUser();
+		lt.testRecordNewUser();
+		lt.testReadUserInfo();
+
+	}
 
 }

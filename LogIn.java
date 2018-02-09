@@ -1,3 +1,10 @@
+/**
+ *
+ * COMP 354 Project
+ * Group PJ-A
+
+ * This is LogIn class. it handles user login behavior.
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -6,9 +13,9 @@ import java.util.ArrayList;
 
 public class LogIn {
 
-	private static ArrayList<String> login_info = new ArrayList<String>();
+	public static ArrayList<String> login_info = new ArrayList<String>();
 	private static FileWriter writer;
-	private static boolean loggedIn=false;
+	private static boolean loggedIn = false;
 
 	/**
 	 * Adds user login info to arrayList.
@@ -17,9 +24,7 @@ public class LogIn {
 	 */
 	public static void recordNewUser(String username, String password) {
 
-		// Check if this user name and password combination already exist.
-		// if (!validateUser(username, password)) {
-
+		// Compose a user info string to save in file.
 		String newUserInfo = username + "::" + password;
 
 		// Add user details to array list.
@@ -28,10 +33,8 @@ public class LogIn {
 		// write user details to file.
 		saveUserInfo(newUserInfo);
 
-		// }
-		
-		//Set logIn status to true.
-		loggedIn=true;
+		// Set logIn status to true.
+		loggedIn = true;
 
 	}
 
@@ -41,7 +44,7 @@ public class LogIn {
 	public static void saveUserInfo(String userInfo) {
 
 		try {
-			writer = new FileWriter("datafiles/login_info", true);
+			writer = new FileWriter(".//datafiles//login_info", true);
 			if (userInfo != "") {
 				writer.write("\n" + userInfo);
 			}
@@ -70,7 +73,8 @@ public class LogIn {
 		String lineString = "";
 		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new FileReader("datafiles/login_info"));
+			reader = new BufferedReader(new FileReader(".//datafiles//login_info"));
+			// reader = new BufferedReader(new FileReader("login_info"));
 			while ((lineString = reader.readLine()) != null) {
 				login_info.add(lineString);
 

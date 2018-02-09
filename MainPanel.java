@@ -1,4 +1,12 @@
 
+/**
+ *
+ * COMP 354 Project
+ * Group PJ-A
+ 
+ * This is the main GUI class for user login or registration. 
+ */
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -6,8 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -19,10 +25,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Vincent
- */
 public class MainPanel extends JFrame {
 
 	private final JTextField userArea;
@@ -70,7 +72,7 @@ public class MainPanel extends JFrame {
 		placeButtons();
 
 		// Panel settings
-		setSize(800, 800);
+		setSize(900, 900);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(appIcon);
 		setJMenuBar(menuBar);
@@ -166,11 +168,10 @@ public class MainPanel extends JFrame {
 				panel.setupForPanel();
 				userArea.setText("");
 				passwordArea.setText("");
-				loginCount =-1;
+				loginCount = -1;
 
-			}
-			else{
-				//Maximum number of login attempts is 3
+			} else {
+				// Maximum number of login attempts is 3
 				if (loginCount < 4) {
 					setMessage("Username and password did not match! Try again");
 

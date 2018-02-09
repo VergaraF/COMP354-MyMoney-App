@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,8 +23,8 @@ public class FinanceController {
     private static float hobbiesBudget = 0;
     private static float savingsBudget = 0;
     private static float otherBudget = 0;
-    public static float totalBudget = 0;
-    public static float totalSpending = 0;
+    private static float totalBudget = 0;
+    private static float totalSpending = 0;
     private static final JFrame budgetChartFrame = new JFrame("Budget Chart");
     private static final JFrame spendingsChartFrame = new JFrame("Spendings Chart");
     private static FinancePanel fp = new FinancePanel();
@@ -219,3 +216,4 @@ public class FinanceController {
         });
     }
 }
+

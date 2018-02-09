@@ -286,10 +286,11 @@ public class FinancePanel extends MainPanel {
 
 
         //Panel settings
-        setSize(900, 800);
+        setSize(900, 900);
         setVisible(true);
         setResizable(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setIconImage(appIcon);
     }
 }
+

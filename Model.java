@@ -2,9 +2,11 @@
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * A model of the MyMoney App
@@ -49,11 +51,12 @@ public class Model {
 	public void setInputFileName(String inputFileName) {
 		this.inputFileName = inputFileName;
 	}
+
 	public static String displayTransactions() {
 		Scanner s1 = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream("datafiles/Transactions"));
+			s1 = new Scanner(new FileInputStream(".//datafiles//transactions"));
 		} catch (FileNotFoundException e) {
 			System.out.print("file could not be found.");
 
@@ -73,7 +76,7 @@ public class Model {
 		Scanner s1 = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream("datafiles/Bank"));
+			s1 = new Scanner(new FileInputStream(".//datafiles/savings"));
 		} catch (FileNotFoundException e) {
 			System.out.print("File could not be found.");
 
@@ -165,27 +168,19 @@ public class Model {
 		String fileName = "";
 
 		if (LogIn.validateUser(username, password)) {
-			
+
 			fileName = "..//datafiles//default";
-		}
-		else{
-			
+		} else {
+
 			fileName = "..//datafiles//user_not_found";
 		}
 
 		/**
-		if (username.equals("userOne") && password.equals("userOne_password")) {
-
-			fileName = "userOne";
-
-		}
-
-		if (username.equals("userTwo") && password.equals("userTwo_password")) {
-
-			fileName = "userTwo";
-
-		}
-		*/
+		 * if (username.equals("userOne") &&
+		 * password.equals("userOne_password")) { fileName = "userOne"; } if
+		 * (username.equals("userTwo") && password.equals("userTwo_password")) {
+		 * fileName = "userTwo"; }
+		 */
 
 		return fileName;
 	}

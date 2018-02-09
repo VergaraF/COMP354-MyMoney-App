@@ -1,3 +1,7 @@
+
+/**
+ * This is controller class for the application.
+ */
 import javax.swing.SwingUtilities;
 
 public class MyMoneyController {
