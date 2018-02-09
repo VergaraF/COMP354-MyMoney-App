@@ -41,7 +41,7 @@ public class LogIn {
 	public static void saveUserInfo(String userInfo) {
 
 		try {
-			writer = new FileWriter("..//datafiles//login_info", true);
+			writer = new FileWriter("datafiles/login_info", true);
 			if (userInfo != "") {
 				writer.write("\n" + userInfo);
 			}
@@ -70,7 +70,7 @@ public class LogIn {
 		String lineString = "";
 		BufferedReader reader = null;
 		try {
-			reader = new BufferedReader(new FileReader("..//datafiles//login_info"));
+			reader = new BufferedReader(new FileReader("datafiles/login_info"));
 			while ((lineString = reader.readLine()) != null) {
 				login_info.add(lineString);
 
