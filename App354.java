@@ -16,7 +16,7 @@ public class App354 {
     public static void main(String[] args) {
     	
     	MyMoneyController.controller();
-    	FinanceController.setup();
+    	
     	/**
         SwingUtilities.invokeLater(() -> {
             MainPanel p = new MainPanel();
