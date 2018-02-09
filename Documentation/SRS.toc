@@ -1,4 +1,6 @@
 \contentsline {section}{\numberline {1}Revision History}{2}
+\contentsline {paragraph}{Tuesday February 6th, 2018 Version 1.0}{2}
+\contentsline {paragraph}{Tuesday February 7th, 2018 Version 1.1}{2}
 \contentsline {section}{\numberline {2}Project Description}{4}
 \contentsline {subsection}{\numberline {2.1}Introduction}{4}
 \contentsline {subsection}{\numberline {2.2}Context}{4}
@@ -9,13 +11,14 @@
 \contentsline {section}{\numberline {3}Functional requirements}{5}
 \contentsline {subsection}{\numberline {3.1}Overview}{5}
 \contentsline {subsection}{\numberline {3.2}Use cases}{5}
-\contentsline {subsubsection}{\numberline {3.2.1}Create and access user accounts}{5}
-\contentsline {subsubsection}{\numberline {3.2.2}Load and display transactions data}{5}
-\contentsline {subsubsection}{\numberline {3.2.3}Set budgetary objectives}{5}
-\contentsline {subsection}{\numberline {3.3}Business Rules}{5}
-\contentsline {section}{\numberline {4}Non-functional requirements}{5}
-\contentsline {section}{\numberline {5}Design Constraints}{6}
-\contentsline {section}{\numberline {6}Glossary}{6}
-\contentsline {paragraph}{Transaction}{6}
-\contentsline {paragraph}{Budgetary objective}{6}
-\contentsline {section}{\numberline {7}References}{6}
+\contentsline {subsubsection}{\numberline {3.2.1}Create user accounts}{5}
+\contentsline {subsubsection}{\numberline {3.2.2}Access user accounts}{6}
+\contentsline {subsubsection}{\numberline {3.2.3}Load and display transactions data}{6}
+\contentsline {subsubsection}{\numberline {3.2.4}Set budgetary objectives}{7}
+\contentsline {subsection}{\numberline {3.3}Business Rules}{7}
+\contentsline {section}{\numberline {4}Non-functional requirements}{8}
+\contentsline {section}{\numberline {5}Design Constraints}{8}
+\contentsline {section}{\numberline {6}Glossary}{8}
+\contentsline {paragraph}{Transaction}{8}
+\contentsline {paragraph}{Budgetary objective}{8}
+\contentsline {section}{\numberline {7}References}{8}
