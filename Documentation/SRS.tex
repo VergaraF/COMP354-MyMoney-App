@@ -4,7 +4,8 @@
 \usepackage{wrapfig}
 \usepackage{multirow}
 \usepackage{tabu}
-
+\usepackage{graphicx}
+\usepackage{verbatim}
 
 \title{Software Requirements Specification} 
 
@@ -27,10 +28,11 @@
 
 	\paragraph{Tuesday February 6th, 2018 Version 1.0}  
 	
-	
 	\paragraph{Tuesday February 7th, 2018 Version 1.1}  
 	Reworked context, added Business rules, Non-functional requirements
 	
+	\paragraph{Tuesday February 9th, 2018 Version 1.2}  
+	Described Use Case 3, added Domain Model, added the domain model entries to the glossary, formatted tables and lists
 	
 \newpage
 
@@ -58,8 +60,10 @@
 	
 	\subsection{Domain model}
 	
-		...
-	
+		\begin{center}
+			\includegraphics[height=10cm]{DomainModel}
+		\end{center}
+		
 	\subsection{Actors}
 	
 		This document is intended to be read by:
@@ -87,7 +91,7 @@
 		\subsubsection{Create user accounts}
 		
         \begin{center}
-        	\begin{tabular}{ | m{5cm} | m{10cm}| } 
+        	\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 	            \hline
 	            \textbf{Action} & Account management \\ 
 	            \hline
@@ -111,7 +115,7 @@
         
         	\vspace{2mm}
         
-			\begin{tabular}{ | m{5cm} | m{10cm}| } 
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 				\hline
 	            \textbf{Main Scenario-Step} & \textbf{Action} \\ 
 	            \hline
@@ -139,7 +143,7 @@
         \subsubsection{Access user accounts}
 		
         \begin{center}
-	        \begin{tabular}{ | m{5cm} | m{10cm}| } 
+	        \begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 	            \hline
 	            \textbf{Action} & Account management \\ 
 	            \hline
@@ -163,7 +167,7 @@
         
         	\vspace{2mm}
         
-			\begin{tabular}{ | m{5cm} | m{10cm}| } 
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 				\hline
 	            \textbf{Main Scenario-Step} & \textbf{Action} \\ 
 	            \hline
@@ -171,7 +175,7 @@
 	            \hline
 	            2 & User clicks on the “login” button. \\ 
 	            \hline
-	            3 & System verifies if the username ,password pair exists. \\ 
+	            3 & System verifies if the username, password pair exists. \\ 
 	            \hline
 	            4 & System displays the user's transaction logs. \\ 
 	            \hline
@@ -183,7 +187,7 @@
 		\subsubsection{Load and display transactions data}
 		
 		\begin{center}
-	        \begin{tabular}{ | m{5cm} | m{10cm}| } 
+	        \begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 	            \hline
 	            \textbf{Action} & Load and display transaction data \\ 
 	            \hline
@@ -207,7 +211,7 @@
         
         	\vspace{2mm}
         
-           	\begin{tabular}{ | m{5cm} | m{10cm}| } 
+           	\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
            		\hline
 	            \textbf{Main Scenario-Step} & \textbf{Action} \\ 
 	            \hline
@@ -224,60 +228,77 @@
 	        \end{tabular}
         \end{center}
         
-		\subsubsection{Set budgetary objectives}
+		\subsubsection{Create and visualize budget}
 		
 		\begin{center}
-			\begin{tabular}{ | m{5cm} | m{10cm}| } 
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 				\hline
 				\textbf{Action} & Account customization \\ 
 				\hline
 				\textbf{Case ID} & 3 \\ 
 				\hline
-				\textbf{Summary} & The user is able to create, inspect and delete budgetary objectives \\
+				\textbf{Summary} & The user is able to create a budget and visualize it with a chart \\
 				\hline
 				\textbf{Scope} & Budget management application \\ 
 				\hline
-				\textbf{Trigger} & Objectives button \\
+				\textbf{Trigger} & Budget button \\
 				\hline
 				\textbf{Precondition} & To be logged in as a user \\ 
 				\hline
-				\textbf{Postcondition} & Objectives info displayed and editable \\ 
+				\textbf{Postcondition} & Budget information displayed and editable, chart is accessible \\ 
 				\hline
 				\textbf{Primary Actor} & User \\ 
-				\hline
-				\textbf{Secondary Actor} & Filesystem \\ 
 				\hline
 			\end{tabular}
 		
 			\vspace{2mm}
 		
-			\begin{tabular}{ | m{5cm} | m{10cm}| } 
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
 				\hline
 				\textbf{Main Scenario-Step} & \textbf{Action} \\ 
 				\hline
-				1 & User clicked the Objectives button \\ 
+				1 & User clicks the Budget button \\ 
 				\hline
-				2 & System displays a list of the user's objectives and the appropriate controls to create new ones and delete old ones \\ 
+				2 & User chooses a category \\ 
 				\hline
-				3 & ... \\ 
+				3 & User enters an amount \\ 
 				\hline
-				4 & ... \\ 
+				4 & User clicks the Add to budget button \\ 
 				\hline
-				5 & ... \\ 
+				5 & User's budget is updated in real time \\ 
+				\hline
+				6 & User clicks Create chart button \\ 
+				\hline
+				7 & User's budget is instantly computed and illustrated by a chart in a new window \\ 
+				\hline
+				8 & User clicks the Reset budget button \\ 
+				\hline
+				9 & User's budget values are all set to 0 \\
+				\hline
+				10 & User's budget is updated in real time \\  
 				\hline
 			\end{tabular}
 		\end{center}
 	
 	\subsection{Business Rules}
 	
-		The customer must not be able to alter his balance that he entered (read only)
-		The customer must have a credit card with a balance on it (textpad in this case)
-		
+		\begin{itemize}
+			
+			\item The customer must not be able to alter his balance that he entered (read only)
+			
+			\item The customer must have a credit card with a balance on it (textpad in this case)
+			
+		\end{itemize}
+	
 \section{Non-functional requirements}
 
-	The login information is encrypted (password/username)
-	Very intuitive to use (requires no computer knowledge)
-	
+	\begin{itemize}
+		
+		\item The login information (password/username) is encrypted 
+		
+		\item The application is intuitive to use requires no computer knowledge
+		
+	\end{itemize}
 
 \section{Design Constraints}
 
@@ -285,13 +306,51 @@
 
 \section{Glossary}
 
+	\paragraph{User table}
+	
+		The user table is the collection of registered users, along with their login information
+	
+	\paragraph{User}
+	
+		A user is the virtual representation of a person using the application
+	
+	\paragraph{App account}
+	
+		An account is the model used by the application to store and use a user's information and interact with all the different features present in the application
+	
+	\paragraph{Spendings}
+	
+		A user's spending is the agglomeration of every transaction done and entered by the user
+	
+	\paragraph{Budget}
+	
+		A user's budget is the collection of the user's projected spendings
+	
+	\paragraph{Chart}
+	
+		A chart is the graphic illustration of the user's spending or budget information
+	
+	\paragraph{Chart area}
+	
+		A chart area represents a category of the user's projected or actual spendings, represented by a percentage of the total spendings or budget and unique color in the chart, indicating which category the area relates to
+		
 	\paragraph{Transaction}
 	
-		A transaction summarizes a positive or negative money transaction made by the user in real life and is composed of the amount of money exchanged during the transaction, the date when the transaction was made, the business the transaction was completed with, and the category which the transaction relate to (e.g. food, home, transportation, salary, ...)
+		A transaction summarizes a positive or negative money transaction made by the user in real life and is composed of the amount of money exchanged during the transaction and the category which the transaction relates to (e.g. food, home, transportation, salary, ...)
+		
+	\paragraph{Objective}
+		
+		An objective is an entry reflecting a projected amount spent in a given category. It is composed of a category and an amount. These values are used by the system to produce a budget for the user, illustrated by a chart if the user so chooses)
+	
+	\begin{comment}
+	\paragraph{Transaction}
+	
+	A transaction summarizes a positive or negative money transaction made by the user in real life and is composed of the amount of money exchanged during the transaction, the date when the transaction was made, the business the transaction was completed with, and the category which the transaction relate to (e.g. food, home, transportation, salary, ...)
 	
 	\paragraph{Budgetary objective}
 	
 		A budgetary objective represents a goal that the user wishes to aim towards in term of money saving. An objective tracks how much money was spent on what category or categories of goods and services in a set amount of time and compares it with a set goal. A budgetary objective is considered a success if the amount of money spent in the tracked amount of time on the tracked objective is smaller than the set goal. It is tagged as “In progress” if the period of time tracked includes the current date. It is considered a failure otherwise.
+	\end{comment}
 
 \section{References}
 
