@@ -14,7 +14,7 @@ public class FinanceTest extends TestCase {
     public void test1(){
         assertTrue(FinanceController.homeBudget==1);
     }
-    //homeSpending should be set to, testing the value
+    //homeSpending should be set to 0, testing the value
     @Test
     public void test2(){
         assertTrue(FinanceController.homeSpending==0);
