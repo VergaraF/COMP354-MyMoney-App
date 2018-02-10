@@ -82,9 +82,9 @@ public class FinancePanel extends MainPanel {
     /**
      * OVERRIDING THE MAINPANEL setupForPanel METHOD
      *
-     * The FinancePanel class use the GridBagLayout to distribute the components 
+     * The FinancePanel class use the GridBagLayout to distribute the components
      * on the JFrame.
-     * 
+     *
      * 6 labels are used on the budget side to show the amounts dedicated to the
      * home,the food,the hobbies,the savings and for other budgeting. The 6th
      * label is for the total budget amount.
