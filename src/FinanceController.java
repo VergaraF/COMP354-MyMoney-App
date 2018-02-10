@@ -1,6 +1,4 @@
 
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -29,6 +27,9 @@ public class FinanceController {
     private static final JFrame spendingsChartFrame = new JFrame("Spendings Chart");
     private static FinancePanel fp = new FinancePanel();
 
+    /**
+     * Provide action on click for the finance panel
+     */
     public static void setup() {
         fp.setupForPanel();
         getBudgetDropInfo();
@@ -39,6 +40,9 @@ public class FinanceController {
         resetSpendings();
     }
 
+    /**
+     * Allow the reset budget button to reset the labels on the budget side
+     */
     public static void resetBudget() {
         fp.resetBudget.addActionListener(new ActionListener() {
             @Override
@@ -59,6 +63,9 @@ public class FinanceController {
         });
     }
 
+    /**
+     * Allow the reset spending button to reset the labels on the spending side
+     */
     public static void resetSpendings() {
         fp.resetSpendings.addActionListener(new ActionListener() {
             @Override
@@ -80,6 +87,10 @@ public class FinanceController {
         });
     }
 
+    /**
+     * Create a chart with the budget labels when you click on the create a
+     * chart button on the budget side.
+     */
     public static void createBudgetChart() {
         fp.makeChart.addActionListener(new ActionListener() {
             @Override
@@ -98,6 +109,10 @@ public class FinanceController {
         });
     }
 
+    /**
+     * Create a chart with the spending labels when you click on the create a
+     * chart button on the spending side.
+     */
     public static void createSpendingsChart() {
         fp.makeChart2.addActionListener(new ActionListener() {
             @Override
@@ -116,6 +131,10 @@ public class FinanceController {
         });
     }
 
+    /**
+     * Take the amount from the text field on the budget side and put it in the
+     * label corresponding to the category from the drop box menu.
+     */
     public static void getBudgetDropInfo() {
         fp.addToBudget.addActionListener(new ActionListener() {
             @Override
@@ -166,6 +185,10 @@ public class FinanceController {
         });
     }
 
+    /**
+     * Take the amount from the text field on the spending side and put it in
+     * the label corresponding to the category from the drop box menu.
+     */
     public static void getSpendingDropInfo() {
         fp.addToSpendings.addActionListener(new ActionListener() {
             @Override
@@ -216,4 +239,3 @@ public class FinanceController {
         });
     }
 }
-
