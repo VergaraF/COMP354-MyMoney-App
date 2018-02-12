@@ -25,12 +25,16 @@
 
    \vspace*{\stretch{1.0}}
    \begin{center}
-      \Large\textbf{Software Requirements Specification Version 1.2}\\
+      \Large\textbf{Software Requirements Specification}\\
       \large\textit{Prepared by Group PA-PJ}\\
    \end{center}
    \vspace*{\stretch{2.0}}
    
    
+
+
+\tableofcontents
+
 \newpage
 
 \section{Revision History}
@@ -45,19 +49,20 @@
 	
 \newpage
 
-\tableofcontents
-
 \newpage
-	
+
 \section{Project Description}
 
+    \subsection{Purpose}
+		Our team has been given a mandate to design and implement a money budgeting application for use by the clients of our customer. The application aims to provide a representation of a user's current spending based on type and to offer him/her ways in which that spending can be changed. The purpose of this document is to provide the Software Requirement Specification (SRS) report for the the said application. The purpose of it is to give a high level overview and a full description of the functional and nonfunctional requirements of the system. It will also cover the system design and implementation constraints, and different external interfaces with which the system shall interface.
+		
 	\subsection{Introduction}
 	
-		The primary goal of this project is to develop a program to manage one’s own finances to satisfy a targeted savings amount. Using this program, the users can obtain critical information about their spending and make better, educated decisions one how to manage their finances.
+		Currently, many users have trouble discerning the way in which they spend their money unless they track it themselves, however, that task is arduous and time consuming. In order to offer customers with a clear representation of their finances, companies have developed complicated software to solve this task, however, often times, users hesitate to use it due to the aforementioned complexity. As a solution, we have been tasked with presenting customers with a simple, yet efficient and intuitive application.
 	
 	\subsection{Context}
 	
-		Our team has been given a mandate to design and implement a money budgeting application for use by the clients of our customer. The application aims to provide a representation of a user's current spending based on type and to offer him/her ways in which that spending can be changed. The purpose of this document is to provide the Software Requirement Specification (SRS) report for the the said application. The purpose of it is to give a high level overview and a full description of the functional and nonfunctional requirements of the system. It will also cover the system design and implementation constraints, and different external interfaces with which the system shall interface.
+		In the context of our application, the main way users will be able to interact with our application will be mainly through a desktop application. The application will use user provided user information (bank statement) in order to provide an assessment of the current spending.
 	
 	\subsection{Business goals}
 	
@@ -71,6 +76,12 @@
 	
 		\begin{center}
 			\includegraphics[height=10cm]{DomainModel}
+		\end{center}
+		
+	\subsection{Class Diagram}
+	
+		\begin{center}
+			\includegraphics[height=10cm]{Classdiagram}
 		\end{center}
 		
 	\subsection{Actors}
