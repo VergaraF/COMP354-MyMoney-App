@@ -47,7 +47,8 @@
 	
 	\paragraph{Tuesday February 9th, 2018 Version 1.2}  
 	Described Use Case 3, added Domain Model, added the domain model entries to the glossary, formatted tables and lists
-	
+	\paragraph{Saturday March 3rd, 2018 Version 1.3}
+	Described Use Case 4, Use Case 5 and the MVC model.
 \newpage
 
 \newpage
@@ -74,7 +75,15 @@
 		The MyMoneyApp software is a financial management application, developed in Java as a standalone desktop application targeting young consumers. This system’s aim is to help users to make wise and accurate decisions when they have a target amount of savings they want to have for a month. It performs this operation by first getting the user’s bank statement, then displaying them on-screen to differentiate what amount of money has went into what type of service, and to then be able to change those amounts in the coming months. The main qualities of MyMoneyApp, is that it is easy-of-use, user-friendly and efficient, which will allow the purchasing company to satisfy its customers’ needs. All in all, this software will help the company to hold its market leader position in the financial domain.
 	
 	\newpage
-	
+	\subsection{Model-View-Controller(MVC) model}
+		\begin{center}
+			\includegraphics[height=10cm]{MVC}
+		\end{center}
+		The MVC pattern is commonly used in computer applications which requires interaction with the user. There is three components to the model-view-controller architectural pattern. \\ \\
+		First, the model is the backbone of the application. The model contains the functions and the data used by the application. \\ \\
+		Secondly, the view is the component which will be shown to the user. In our case, the view is a graphical user interface(GUI) which will create interactions with the user through various buttons. \\ \\
+		Finally, by clicking buttons the user will use the controller. The controller is the component connecting the view to the model and the model to the view. By pressing a button, the user will update the model through the controller and the update will be shown through the view. The most important aspect of the MVC pattern is the separation of the source code in three different components, thus enabling three engineers to work on the code at the same time.
+	\newpage
 	\subsection{Domain model}
 	
 		\begin{center}
@@ -305,6 +314,87 @@
 				9 & User's budget values are all set to 0 \\
 				\hline
 				10 & User's budget is updated in real time \\  
+				\hline
+			\end{tabular}
+		\end{center}
+
+		\subsubsection{Automate the spendings in the budgeting section}
+		
+		\begin{center}
+				\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
+				\hline
+				\textbf{Action} & Automation of spendings \\ 
+				\hline
+				\textbf{Case ID} & 4 \\ 
+				\hline
+				\textbf{Summary} & Once the user logs in, he is able to look at his spendings and use it to display charts \\
+				\hline
+				\textbf{Scope} & Budget management application \\ 
+				\hline
+				\textbf{Trigger} & Budget button \\
+				\hline
+				\textbf{Precondition} & To be logged in as a user \\ 
+				\hline
+				\textbf{Postcondition} & Budget information displayed and editable, chart is accessible \\ 
+				\hline
+				\textbf{Primary Actor} & User \\ 
+				\hline
+				\end{tabular}
+		
+			\vspace{2mm}
+		
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
+				\hline
+				\textbf{Main Scenario-Step} & \textbf{Action} \\ 
+				\hline
+				1 & User logs in \\ 
+				\hline
+				2 & User chooses the budgeting window \\ 
+				\hline
+				3 & User create charts with the automated spendings \\ 
+				\hline
+				\end{tabular}
+		\end{center}
+
+			
+		\subsubsection{Give advice based on the budgeting section}
+		
+		\begin{center}
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
+				\hline
+				\textbf{Action} & Advice giving from budgeting section \\ 
+				\hline
+				\textbf{Case ID} & 5 \\ 
+				\hline
+				\textbf{Summary} & After the use of the budgeting section, the user is able to receive advice on his spendings. \\
+				\hline
+				\textbf{Scope} & Budget management application \\ 
+				\hline
+				\textbf{Trigger} & Budget button \\
+				\hline
+				\textbf{Precondition} & To be logged in as a user \\ 
+				\hline
+				\textbf{Postcondition} & Budget information displayed and editable, chart is accessible \\ 
+				\hline
+				\textbf{Primary Actor} & User \\ 
+				\hline
+			\end{tabular}
+		
+			\vspace{2mm}
+		
+			\begin{tabular}{ | m{3.5cm} | m{7.5cm}| } 
+				\hline
+				\textbf{Main Scenario-Step} & \textbf{Action} \\ 
+				\hline
+				1 & User logs in \\ 
+				\hline
+				2 & User chooses the budgeting window \\ 
+				\hline
+				3 & User creates charts with the automated spendings \\ 
+				\hline
+				4 & User press yes when he is given the choice for financial advice\\ 
+				\hline
+				5 & User financial advice appears on the screen\\ 
 				\hline
 			\end{tabular}
 		\end{center}
