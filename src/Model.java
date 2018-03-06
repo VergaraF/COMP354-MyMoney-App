@@ -56,7 +56,7 @@ public class Model {
 		Scanner s1 = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles//transactions"));
+			s1 = new Scanner(new FileInputStream(".//datafiles//Transacations"));
 		} catch (FileNotFoundException e) {
 			System.out.print("file could not be found.");
 
