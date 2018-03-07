@@ -41,22 +41,19 @@ public class TransactionsController {
         for (String entry : entries) {
         		
         		String[] data = entry.split("\\s+");
-        		System.out.println(entry);
+        		if (data.length == 0) {
+        			return;
+        		}
         		String amount = data[0];
         		String date = data[1];
-        		String enterprise = data[2];
-        		
+        		String enterprise = data[2];       		
         		String category = data[3];
 
         			if (!transactions.containsKey(date)) {
             			transactions.put(date, new TransactionsGroup());
             		}
             		transactions.get(date).addTransaction(new Transaction(Double.parseDouble(amount), date, enterprise, category));
-
-        		
-        		//transactions.addTransaction(new Transaction(Integer.parseInt(amount), date, enterprise, category));
-		}
-       
+		}     
 	}
 	
 	public void exportTransactionsToFiles() {

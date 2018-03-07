@@ -7,6 +7,11 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
+import Controller.MyMoneyController;
+import Tests.*;
+import Model.*;
+import Controller.*;
+
 public class App354 {
 
 	public static void main(String[] args) {
