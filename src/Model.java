@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
 
 /**
  * A model of the MyMoney App
@@ -15,77 +17,136 @@ import java.util.Scanner;
  *
  */
 
-public class Model {
-
+public class Model 
+{
+	public static Model Instance;
+	
 	private String userName;
 	private String password;
 	private String inputFileName;
-
-	public Model(String userName, String password) {
+	private Transaction[] Transactions;
+	
+	public Model(String userName, String password) 
+	{
+		Instance = this;
+		
 		this.userName = userName;
 		this.password = password;
 		this.inputFileName = getUserDataFile(this.userName, this.password);
-
+		
+		Transactions = LoadTransactions();
 	}
 
-	public String getUserName() {
+	public String getUserName() 
+	{
 		return userName;
 	}
 
-	public void setUserName(String userName) {
+	public void setUserName(String userName) 
+	{
 		this.userName = userName;
 	}
 
-	public String getPassword() {
+	public String getPassword() 
+	{
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(String password) 
+	{
 		this.password = password;
 	}
 
-	public String getInputFileName() {
+	public String getInputFileName() 
+	{
 		return inputFileName;
 	}
 
-	public void setInputFileName(String inputFileName) {
+	public void setInputFileName(String inputFileName) 
+	{
 		this.inputFileName = inputFileName;
 	}
+	
+	public Transaction[] GetTransactions() 
+	{
+		return Transactions;
+	}
 
-	public static String displayTransactions() {
-		Scanner s1 = null;
+	public Transaction[] LoadTransactions() 
+	{
+		Scanner file = null;
 
-		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles//Transacations"));
-		} catch (FileNotFoundException e) {
+		try 
+		{
+			file = new Scanner(new FileInputStream(".//datafiles//Transacations"));
+		} 
+		catch (FileNotFoundException e) 
+		{
 			System.out.print("file could not be found.");
 
 		}
-		String transactions = "<html>";
-
-		while (s1.hasNextLine()) {
-			transactions += s1.nextLine() + "<br>";
+		
+		ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
+		
+		while (file.hasNextLine()) 
+		{
+			String line = file.nextLine();
+			
+			String[] transactionData = line.split(" ");
+			Transaction newTransaction = new Transaction(
+					Float.parseFloat(transactionData[0]), 
+					transactionData[1], 
+					transactionData[2], 
+					TransactionCategory.valueOf(transactionData[3].toUpperCase())
+			);
+			
+			transactionList.add(newTransaction);
 		}
 
-		s1.close();
-
-		return transactions;
+		file.close();
+		
+		return transactionList.toArray(new Transaction[transactionList.size()]);
+	}
+	
+	public String DisplayTransactions()
+	{
+		String transactionString = "<html>";
+		
+		for(int i = 0; i < Transactions.length; i++)
+		{
+			String transactionLine = ""; 
+			
+			transactionLine += String.valueOf(String.format("%.2f", -Transactions[i].GetAmount()));
+			transactionLine += ", ";
+			transactionLine += Transactions[i].GetDate();
+			transactionLine += ", ";
+			transactionLine += Transactions[i].GetBusiness();
+			transactionLine += ", ";
+			transactionLine += Transactions[i].GetCategory().toString().toLowerCase();
+			
+			transactionString += transactionLine + "<br>";
+		}
+		
+		return transactionString;
 	}
 
-	public static String displaySavings() {
-		Scanner s1 = null;
+	public String displaySavings() 
+	{
+		Scanner file = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles/savings"));
-		} catch (FileNotFoundException e) {
+			file = new Scanner(new FileInputStream(".//datafiles/savings"));
+		} 
+		catch (FileNotFoundException e) 
+		{
 			System.out.print("File could not be found.");
-
 		}
+		
 		String savings = "";
 
-		savings = s1.next();
+		savings = file.next();
 
-		s1.close();
+		file.close();
 
 		return savings;
 	}
@@ -100,7 +161,6 @@ public class Model {
 
 		// Save user info into file/database
 		saveUserInfo(userName, password);
-
 	}
 
 	/**

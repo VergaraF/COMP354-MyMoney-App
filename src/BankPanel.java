@@ -30,9 +30,9 @@ public class BankPanel extends MainPanel {
 		appIcon = chooseIconImage(appIcon, "money.png");
 		bankInfo = new JLabel("Banking Information");
 		Savings = new JLabel("<HTML><U>Savings</U></HTML>");
-		SavingsInfo = new JLabel(Model.displaySavings());
+		SavingsInfo = new JLabel(Model.Instance.displaySavings());
 		Transactions = new JLabel("<HTML><U>Transactions</U></HTML>");
-		TransactionsInfo = new JLabel(Model.displayTransactions());
+		TransactionsInfo = new JLabel(Model.Instance.DisplayTransactions());
 		clsButton = new JButton("Exit");
 		budgetButton = new JButton("Budget");
 		closeOnCancelClick(clsButton);

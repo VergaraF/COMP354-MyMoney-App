@@ -33,11 +33,11 @@ public class FinanceController {
     public static void setup() {
         FP.setupForPanel();
         getBudgetDropInfo();
-        getSpendingDropInfo();
+        //getSpendingDropInfo();
         createBudgetChart();
         createSpendingsChart();
         resetBudget();
-        resetSpendings();
+        updateSpendings();
     }
 
     /**
@@ -66,25 +66,33 @@ public class FinanceController {
     /**
      * Allow the reset spending button to reset the labels on the spending side
      */
-    public static void resetSpendings() {
-        FP.resetSpendings.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                totalSpending = 0;
-                homeSpending = 0;
-                foodSpending = 0;
-                hobbiesSpending = 0;
-                savingsSpending = 0;
-                otherSpending = 0;
-                FP.spendings.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.homeS.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.foodS.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.hobbiesS.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.savingsS.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.otherS.setText(String.valueOf(String.format("%.2f", 0.0)));
-
-            }
-        });
+    public static void updateSpendings() 
+    {
+    	totalSpending = 0;
+        homeSpending = 0;
+        foodSpending = 0;
+        hobbiesSpending = 0;
+        savingsSpending = 0;
+        otherSpending = 0;
+        
+        Transaction[] transactions = Model.Instance.GetTransactions();
+        
+        for(int i = 0; i < transactions.length; i++)
+		{
+        	homeSpending += transactions[i].GetCategory() == TransactionCategory.HOME ? -transactions[i].GetAmount() : 0f;
+        	foodSpending += transactions[i].GetCategory() == TransactionCategory.FOOD ? -transactions[i].GetAmount() : 0f;
+        	hobbiesSpending += transactions[i].GetCategory() == TransactionCategory.HOBBIES ? -transactions[i].GetAmount() : 0f;
+        	savingsSpending += transactions[i].GetCategory() == TransactionCategory.SAVINGS ? -transactions[i].GetAmount() : 0f;
+        	otherSpending += transactions[i].GetCategory() == TransactionCategory.OTHER ? -transactions[i].GetAmount() : 0f;
+        	totalSpending += -transactions[i].GetAmount();
+		}
+    	
+        FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
+        FP.homeS.setText(String.valueOf(String.format("%.2f", homeSpending)));
+        FP.foodS.setText(String.valueOf(String.format("%.2f", foodSpending)));
+        FP.hobbiesS.setText(String.valueOf(String.format("%.2f", hobbiesSpending)));
+        FP.savingsS.setText(String.valueOf(String.format("%.2f", savingsSpending)));
+        FP.otherS.setText(String.valueOf(String.format("%.2f", otherSpending)));
     }
 
     /**
@@ -178,60 +186,6 @@ public class FinanceController {
                             totalBudget += Float.parseFloat(FP.text1.getText());
                             FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
                             FP.otherB.setText(String.valueOf(String.format("%.2f", otherBudget)));
-                        }
-                        break;
-                }
-            }
-        });
-    }
-
-    /**
-     * Take the amount from the text field on the spending side and put it in
-     * the label corresponding to the category from the drop box menu.
-     */
-    public static void getSpendingDropInfo() {
-        FP.addToSpendings.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                switch (String.valueOf(FP.realSpending.getSelectedItem())) {
-                    case "Home":
-                        if (!FP.text2.getText().equals("")) {
-                            homeSpending += Float.parseFloat(FP.text2.getText());
-                            totalSpending += Float.parseFloat(FP.text2.getText());
-                            FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
-                            FP.homeS.setText(String.valueOf(String.format("%.2f", homeSpending)));
-                        }
-                        break;
-                    case "Food":
-                        if (!FP.text2.getText().equals("")) {
-                            foodSpending += Float.parseFloat(FP.text2.getText());
-                            totalSpending += Float.parseFloat(FP.text2.getText());
-                            FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
-                            FP.foodS.setText(String.valueOf(String.format("%.2f", foodSpending)));
-                        }
-                        break;
-                    case "Hobbies":
-                        if (!FP.text2.getText().equals("")) {
-                            hobbiesSpending += Float.parseFloat(FP.text2.getText());
-                            totalSpending += Float.parseFloat(FP.text2.getText());
-                            FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
-                            FP.hobbiesS.setText(String.valueOf(String.format("%.2f", hobbiesSpending)));
-                        }
-                        break;
-                    case "Savings":
-                        if (!FP.text2.getText().equals("")) {
-                            savingsSpending += Float.parseFloat(FP.text2.getText());
-                            totalSpending += Float.parseFloat(FP.text2.getText());
-                            FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
-                            FP.savingsS.setText(String.valueOf(String.format("%.2f", savingsSpending)));
-                        }
-                        break;
-                    case "Other":
-                        if (!FP.text2.getText().equals("")) {
-                            otherSpending += Float.parseFloat(FP.text2.getText());
-                            totalSpending += Float.parseFloat(FP.text2.getText());
-                            FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
-                            FP.otherS.setText(String.valueOf(String.format("%.2f", otherSpending)));
                         }
                         break;
                 }

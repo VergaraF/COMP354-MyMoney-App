@@ -8,30 +8,35 @@ class BankingInfoTest {
 	@Test
 	void testTransactions() {
 	
+		Model testModel = new Model("a", "a");
 		
-		String transactions = Model.displayTransactions();
+		String transactions = testModel.DisplayTransactions();
 		
-		if(transactions!=null)
+		if(transactions != null)
 		{
 		assertTrue(true);
 		}
 		else 
+		{
 			assertFalse(true);
+		}
 	}
 	
 	//Test that the bank file is opened and not empty.
 	@Test
 		void testSavings() {
 		
+		Model testModel = new Model("a", "a");
 			
-			String savings = Model.displaySavings();
+		String savings = testModel.displaySavings();
 			
-			if(savings!=null)
-			{
+		if(savings!=null)
+		{
 			assertTrue(true);
-			}
-			else 
-				assertFalse(true);
 		}
-
+		else 
+		{
+			assertFalse(true);
+		}	
+	}
 }

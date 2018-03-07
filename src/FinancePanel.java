@@ -25,11 +25,11 @@ public class FinancePanel extends MainPanel {
     protected JPanel bChart;
     protected JPanel sChart;
     protected JTextField text1;
-    protected JTextField text2;
+    //protected JTextField text2;
     protected JButton makeChart;
     protected JButton addToBudget;
     protected JButton makeChart2;
-    protected JButton addToSpendings;
+    //protected JButton addToSpendings;
     protected JLabel label;
     protected JLabel budget;
     protected JLabel homeB;
@@ -44,7 +44,7 @@ public class FinancePanel extends MainPanel {
     protected JLabel savingsS;
     protected JLabel otherS;
     protected JButton resetBudget;
-    protected JButton resetSpendings;
+    //protected JButton resetSpendings;
 
     /**
      * Default constructor for FinancePanel class
@@ -62,7 +62,7 @@ public class FinancePanel extends MainPanel {
 
         //Setting up the textfields
         text1 = new JTextField("", 6);
-        text2 = new JTextField("", 6);
+        //text2 = new JTextField("", 6);
 
         //Setting up the add and create chart buttons on the budget side
         makeChart = new JButton("Create chart");
@@ -70,13 +70,13 @@ public class FinancePanel extends MainPanel {
 
         //Setting up the add and create chart buttons on the spending side
         makeChart2 = new JButton("Create chart");
-        addToSpendings = new JButton("Add to spendings");
+        //addToSpendings = new JButton("Add to spendings");
 
         //Setting up the reset budget button
         resetBudget = new JButton("Reset budget");
 
         //Setting up the reset spending button
-        resetSpendings = new JButton("Reset spendings");
+        //resetSpendings = new JButton("Reset spendings");
     }
 
     /**
@@ -320,6 +320,8 @@ public class FinancePanel extends MainPanel {
         gb.gridy = 0;
         add(otherS, gb);
 
+        /*
+        
         //Drop box on spending side
         gb.insets = new Insets(0, -315, -80, 0);
         gb.gridx = 1;
@@ -338,6 +340,14 @@ public class FinancePanel extends MainPanel {
         gb.gridy = 0;
         add(addToSpendings, gb);
 
+		//Reset spending button
+        gb.insets = new Insets(0, -265, 350, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(resetSpendings, gb);
+
+         */
+
         //Make chart button on spending side
         gb.insets = new Insets(0, 303, -80, 0);
         gb.gridx = 1;
@@ -349,12 +359,6 @@ public class FinancePanel extends MainPanel {
         gb.gridx = 0;
         gb.gridy = 0;
         add(resetBudget, gb);
-
-        //Reset spending button
-        gb.insets = new Insets(0, -265, 350, 0);
-        gb.gridx = 1;
-        gb.gridy = 0;
-        add(resetSpendings, gb);
 
         //JFrame settings
         setSize(900, 420);
