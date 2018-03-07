@@ -3,11 +3,11 @@ package Model;
 public class Transaction {
 
 	public String date;
-	public int amount;
+	public double amount;
 	public String enterprise;
 	public String category;
 	
-	public Transaction(int amount, String date, String enterprise, String category) {
+	public Transaction(double amount, String date, String enterprise, String category) {
 		this.amount = amount;
 		this.date = date;
 		this.enterprise = enterprise;

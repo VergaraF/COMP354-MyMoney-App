@@ -8,18 +8,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Scanner;
 
 import Model.*;
 
 public class TransactionsController {
 
 	//public TransactionsGroup transactions;
-	private Map<String, TransactionsGroup> transactions;
+	private Map<String, TransactionsGroup> transactions = new HashMap<String, TransactionsGroup>();
 	
 	public TransactionsController() {}
 	
@@ -39,20 +39,22 @@ public class TransactionsController {
                    
         //-47.95 2017-05-09 STM Transport
         for (String entry : entries) {
-        		Scanner scan = new Scanner(entry);
-        		scan.useDelimiter("\\s*");
         		
-        		String amount = scan.next();
-        		String date = scan.next();
-        		String enterprise = scan.next();
-        		String category = scan.next();
-        		if (!transactions.containsKey(date)) {
-        			transactions.put(date, new TransactionsGroup());
-        		}
-        		transactions.get(date).addTransaction(new Transaction(Integer.parseInt(amount), date, enterprise, category));
-        		//transactions.addTransaction(new Transaction(Integer.parseInt(amount), date, enterprise, category));
+        		String[] data = entry.split("\\s+");
+        		System.out.println(entry);
+        		String amount = data[0];
+        		String date = data[1];
+        		String enterprise = data[2];
+        		
+        		String category = data[3];
 
-        		scan.close();
+        			if (!transactions.containsKey(date)) {
+            			transactions.put(date, new TransactionsGroup());
+            		}
+            		transactions.get(date).addTransaction(new Transaction(Double.parseDouble(amount), date, enterprise, category));
+
+        		
+        		//transactions.addTransaction(new Transaction(Integer.parseInt(amount), date, enterprise, category));
 		}
        
 	}

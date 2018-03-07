@@ -11,6 +11,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import Controller.*;
+
 /**
  *
  * @author vincent
@@ -27,6 +29,12 @@ public class BankPanel extends MainPanel {
 	private final JLabel TransactionsInfo;
 
 	public BankPanel() {
+		System.out.println("Generating data files");
+		TransactionsController transController = new TransactionsController();
+		transController.addTransactions(".//datafiles//Transacations");
+		transController.exportTransactionsToFiles();
+		
+		
 		appIcon = chooseIconImage(appIcon, "money.png");
 		bankInfo = new JLabel("Banking Information");
 		Savings = new JLabel("<HTML><U>Savings</U></HTML>");
