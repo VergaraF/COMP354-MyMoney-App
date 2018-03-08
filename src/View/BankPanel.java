@@ -22,6 +22,8 @@ import Model.Model;
 public class BankPanel extends MainPanel {
 	private JButton clsButton;
 	private JButton budgetButton;
+	private JButton rawButton;
+	private JButton groupByDateButton;
 
 	private BufferedImage appIcon;
 	private final JLabel bankInfo;
@@ -29,32 +31,52 @@ public class BankPanel extends MainPanel {
 	private final JLabel SavingsInfo;
 	private final JLabel Transactions;
 	private final JLabel TransactionsInfo;
+	
+	TransactionsController transactionController = new TransactionsController();
 
 	public BankPanel() {
 		//[Fabian]
 		System.out.println("Generating data files");
-		TransactionsController transactionController = new TransactionsController();
+		
 		transactionController.addTransactions(".//datafiles//Transacations");
 		transactionController.exportTransactionsToFiles();
 		//
 		
 		appIcon = chooseIconImage(appIcon, "money.png");
+		
 		bankInfo = new JLabel("Banking Information");
 		Savings = new JLabel("<HTML><B>Savings</B></HTML>");
 		SavingsInfo = new JLabel(Model.displaySavings());
 		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
-		TransactionsInfo = new JLabel(transactionController.displayRawTransactions());
+		TransactionsInfo = new JLabel(transactionController.getRawStringTransacations());
+		
 		clsButton = new JButton("Exit");
 		budgetButton = new JButton("Budget");
+		rawButton = new JButton("Raw");
+		groupByDateButton = new JButton("Date");
+		
+		showRawTransacation(rawButton);
+		showTransacationsGroupedByDate(groupByDateButton);
 		closeOnCancelClick(clsButton);
 		goToBudget(budgetButton);
 
 	}
 
+	public final void showRawTransacation(JButton btn) {
+		btn.addActionListener((ActionEvent e) -> {
+			this.TransactionsInfo.setText(transactionController.getRawStringTransacations());
+		});
+	}
+	
+	public final void showTransacationsGroupedByDate(JButton btn) {
+		btn.addActionListener((ActionEvent e) -> {
+			this.TransactionsInfo.setText(transactionController.getTransacationStringGroupedByDate());
+		});
+	}
+	
 	public final void goToBudget(JButton btn) {
 		btn.addActionListener((ActionEvent e) -> {
 			FinanceController.setup();
-
 		});
 	}
 
@@ -108,12 +130,26 @@ public class BankPanel extends MainPanel {
 		gb.gridy = 2;
 		add(SavingsInfo, gb);
 
-		gb.insets = new Insets(5, 5, 5, 5);
+		gb.insets = new Insets(55, 5, 5, 5);
+		gb.gridx = 3;
+		gb.gridwidth = 4;
+		gb.gridy = 2;
+		gb.gridheight = 2;
+		add(TransactionsInfo, gb);
+		
+		gb.insets = new Insets(5, 1, 5, 5);
 		gb.gridx = 3;
 		gb.gridwidth = 2;
 		gb.gridy = 2;
 		gb.gridheight = 2;
-		add(TransactionsInfo, gb);
+		add(rawButton, gb);
+		
+		gb.insets = new Insets(5, 150, 5, 5);
+		gb.gridx = 3;
+		gb.gridwidth = 2;
+		gb.gridy = 2;
+		gb.gridheight = 2;
+		add(groupByDateButton, gb);
 
 		gb.anchor = GridBagConstraints.NORTH;
 		gb.weighty = 3;

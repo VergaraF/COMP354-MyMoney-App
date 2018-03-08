@@ -22,7 +22,7 @@ import Model.*;
 public class TransactionsController {
 
 	//public TransactionsGroup transactions;
-	private Map<String, TransactionsGroup> transactions = new HashMap<String, TransactionsGroup>();
+	private static Map<String, TransactionsGroup> transactions = new HashMap<String, TransactionsGroup>();
 	
 	public TransactionsController() {}
 	
@@ -79,11 +79,26 @@ public class TransactionsController {
 		}
 	}
 	
-	public Map<String, TransactionsGroup> getTransactions(){
+	public Map<String, TransactionsGroup> getTransactionsMapWithDateKeys(){
 		return this.transactions;
 	}
-	
-	public static  String displayRawTransactions() {
+	public static String getTransacationStringGroupedByDate() {
+		String temp = "<html>";
+		for (Entry<String, TransactionsGroup> entry : transactions.entrySet()) {
+		    String key = entry.getKey();
+		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
+		    
+		   // List<String> transactionEntries = new LinkedList<String>();
+		    temp += "<b>\n" + key + "\n</b><";
+		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
+		    		temp += transaction.toString() + "\n";
+		    }
+		}
+		
+		temp += "</ul></html>";
+		return temp;
+	}
+	public static  String getRawStringTransacations() {
 		Scanner s1 = null;
 
 		try {
@@ -102,5 +117,6 @@ public class TransactionsController {
 
 		return transactions;
 	}
+
 	
 }

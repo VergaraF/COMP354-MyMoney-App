@@ -12,7 +12,7 @@ public class BankingInfoTest {
 	//Test that the transaction file is opened and not empty.
 	@Test
 	public void testTransactions() {
-		String transactions = TransactionsController.displayRawTransactions();
+		String transactions = TransactionsController.getRawStringTransacations();
 		
 		if(transactions!=null)
 		{
