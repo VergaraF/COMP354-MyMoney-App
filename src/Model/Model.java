@@ -55,26 +55,6 @@ public class Model {
 		this.inputFileName = inputFileName;
 	}
 
-	public static String displayTransactions() {
-		Scanner s1 = null;
-
-		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles//Transacations"));
-		} catch (FileNotFoundException e) {
-			System.out.print("file could not be found.");
-
-		}
-		String transactions = "<html>";
-
-		while (s1.hasNextLine()) {
-			transactions += s1.nextLine() + "<br>";
-		}
-
-		s1.close();
-
-		return transactions;
-	}
-
 	public static String displaySavings() {
 		Scanner s1 = null;
 
@@ -87,7 +67,6 @@ public class Model {
 		String savings = "";
 
 		savings = s1.next();
-
 		s1.close();
 
 		return savings;

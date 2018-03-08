@@ -31,18 +31,19 @@ public class BankPanel extends MainPanel {
 	private final JLabel TransactionsInfo;
 
 	public BankPanel() {
+		//[Fabian]
 		System.out.println("Generating data files");
-		TransactionsController transController = new TransactionsController();
-		transController.addTransactions(".//datafiles//Transacations");
-		transController.exportTransactionsToFiles();
-		
+		TransactionsController transactionController = new TransactionsController();
+		transactionController.addTransactions(".//datafiles//Transacations");
+		transactionController.exportTransactionsToFiles();
+		//
 		
 		appIcon = chooseIconImage(appIcon, "money.png");
 		bankInfo = new JLabel("Banking Information");
-		Savings = new JLabel("<HTML><U>Savings</U></HTML>");
+		Savings = new JLabel("<HTML><B>Savings</B></HTML>");
 		SavingsInfo = new JLabel(Model.displaySavings());
-		Transactions = new JLabel("<HTML><U>Transactions</U></HTML>");
-		TransactionsInfo = new JLabel(Model.displayTransactions());
+		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
+		TransactionsInfo = new JLabel(transactionController.displayRawTransactions());
 		clsButton = new JButton("Exit");
 		budgetButton = new JButton("Budget");
 		closeOnCancelClick(clsButton);

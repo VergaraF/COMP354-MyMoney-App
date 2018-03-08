@@ -1,6 +1,8 @@
 package Controller;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -12,6 +14,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Map.Entry;
 
 import Model.*;
@@ -38,12 +41,10 @@ public class TransactionsController {
         }
                    
         //-47.95 2017-05-09 STM Transport
-        for (String entry : entries) {
-        		
+        for (String entry : entries) {  		
         		String[] data = entry.split("\\s+");
-        		if (data.length == 0) {
-        			return;
-        		}
+        		if (data.length < 4) break;
+        		
         		String amount = data[0];
         		String date = data[1];
         		String enterprise = data[2];       		
@@ -63,18 +64,43 @@ public class TransactionsController {
 		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
 		    
 		    List<String> transactionEntries = new LinkedList<String>();
+		    
 		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
 		    		transactionEntries.add(transaction.toString());
 		    }
+		    
 		    Path file = Paths.get(".//datafiles//transactions//" + key +".txt");
-		    //transactionsPerGivenDate.transactions.
+
 		    try {
 				Files.write(file, transactionEntries, Charset.forName("UTF-8"));
-			} catch (IOException e) {
-				
+			} catch (IOException e) {			
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public Map<String, TransactionsGroup> getTransactions(){
+		return this.transactions;
+	}
+	
+	public static  String displayRawTransactions() {
+		Scanner s1 = null;
+
+		try {
+			s1 = new Scanner(new FileInputStream(".//datafiles//Transacations"));
+		} catch (FileNotFoundException e) {
+			System.out.print("file could not be found.");
+
+		}
+		String transactions = "<html>";
+
+		while (s1.hasNextLine()) {
+			transactions += s1.nextLine() + "<br>";
+		}
+
+		s1.close();
+
+		return transactions;
 	}
 	
 }

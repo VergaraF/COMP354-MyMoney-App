@@ -4,13 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import Model.Model;
+import Controller.TransactionsController;
 
 public class BankingInfoTest {
 
+	
 	//Test that the transaction file is opened and not empty.
 	@Test
 	public void testTransactions() {
-		String transactions = Model.displayTransactions();
+		String transactions = TransactionsController.displayRawTransactions();
 		
 		if(transactions!=null)
 		{
