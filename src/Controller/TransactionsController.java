@@ -82,6 +82,7 @@ public class TransactionsController {
 	public Map<String, TransactionsGroup> getTransactionsMapWithDateKeys(){
 		return this.transactions;
 	}
+	
 	public static String getTransacationStringGroupedByDate() {
 		String temp = "<html>";
 		for (Entry<String, TransactionsGroup> entry : transactions.entrySet()) {
@@ -89,13 +90,13 @@ public class TransactionsController {
 		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
 		    
 		   // List<String> transactionEntries = new LinkedList<String>();
-		    temp += "<b>\n" + key + "\n</b><";
+		    temp += "<b>" + key + "\n</b>";
 		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
-		    		temp += transaction.toString() + "\n";
+		    		temp += transaction.toString() +"\n";
 		    }
 		}
 		
-		temp += "</ul></html>";
+		temp += "</html>";
 		return temp;
 	}
 	public static  String getRawStringTransacations() {
