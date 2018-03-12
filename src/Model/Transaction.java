@@ -5,9 +5,9 @@ public class Transaction {
 	public String date;
 	public double amount;
 	public String enterprise;
-	public String category;
+	public TransactionCategory category;
 	
-	public Transaction(double amount, String date, String enterprise, String category) {
+	public Transaction(double amount, String date, String enterprise, TransactionCategory category) {
 		this.amount = amount;
 		this.date = date;
 		this.enterprise = enterprise;
@@ -15,7 +15,7 @@ public class Transaction {
 	}
 	
 	public String toString() {
-		return this.amount + " " + this.date + " " + this.enterprise + " " + this.category;
+		return this.amount + " " + this.date + " " + this.enterprise + " " + this.category.toString().toLowerCase();
 	}
 	
 }

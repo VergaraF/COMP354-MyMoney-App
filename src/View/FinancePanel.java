@@ -20,7 +20,7 @@ public class FinancePanel extends MainPanel {
 	public BufferedImage appIcon;
     public PieChart budgetChart;
     public PieChart spendingChart;
-    public final String[] spendingList = {"Home", "Food", "Hobbies", "Savings", "Other"};
+    public final String[] spendingList = {"Home", "Food", "Hobbies", "Health", "Transport", "Entertainment", "Debt", "Car", "Other"};
     public JComboBox expectedSpending;
     public JComboBox realSpending;
     public JPanel bChart;
@@ -42,8 +42,12 @@ public class FinancePanel extends MainPanel {
     public JLabel homeS;
     public JLabel foodS;
     public JLabel hobbiesS;
-    public JLabel savingsS;
     public JLabel otherS;
+    public JLabel healthS;
+    public JLabel transportS;
+    public JLabel entertainmentS;
+    public JLabel debtS;
+    public JLabel carS;
     public JButton resetBudget;
     public JButton resetSpendings;
 
@@ -230,20 +234,6 @@ public class FinancePanel extends MainPanel {
         gb.gridy = 0;
         add(makeChart, gb);
 
-        //Total spending label
-        label = new JLabel("Total Spendings : ");
-        gb.insets = new Insets(0, -290, 0, 0);
-        gb.gridx = 1;
-        gb.gridy = 0;
-        add(label, gb);
-
-        //Total spending amount
-        spendings = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
-        gb.insets = new Insets(0, -50, 0, 0);
-        gb.gridx = 1;
-        gb.gridy = 0;
-        add(spendings, gb);
-
         //Real spendings label under the reset spendings button
         label = new JLabel("Real Spendings");
         gb.insets = new Insets(0, -305, 300, 0);
@@ -292,52 +282,104 @@ public class FinancePanel extends MainPanel {
         gb.gridx = 1;
         gb.gridy = 0;
         add(hobbiesS, gb);
-
-        //Savings label on spending side
-        label = new JLabel("Savings : ");
-        gb.insets = new Insets(0, -340, 100, 0);
+        
+        //Health label on spending side
+        label = new JLabel("Health : ");
+        gb.insets = new Insets(0, -338, 100, 0);
         gb.gridx = 1;
         gb.gridy = 0;
         add(label, gb);
 
-        //Savings amount on spending side
-        savingsS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        //Health amount on spending side
+        healthS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         gb.insets = new Insets(0, -50, 100, 0);
         gb.gridx = 1;
         gb.gridy = 0;
-        add(savingsS, gb);
-
-        //Other label on spending side
-        label = new JLabel("Other : ");
-        gb.insets = new Insets(0, -350, 50, 0);
+        add(healthS, gb);
+        
+        //Transport label on spending side
+        label = new JLabel("Transport : ");
+        gb.insets = new Insets(0, -338, 50, 0);
         gb.gridx = 1;
         gb.gridy = 0;
         add(label, gb);
 
-        //Other amout on spending side
-        otherS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        //Transport amount on spending side
+        transportS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         gb.insets = new Insets(0, -50, 50, 0);
         gb.gridx = 1;
         gb.gridy = 0;
+        add(transportS, gb);
+        
+        //Entertainment label on spending side
+        label = new JLabel("Entertainment : ");
+        gb.insets = new Insets(0, -338, 0, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(label, gb);
+
+        //Entertainment amount on spending side
+        entertainmentS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        gb.insets = new Insets(0, -50, 0, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(entertainmentS, gb);
+        
+        //Debt label on spending side
+        label = new JLabel("Debt : ");
+        gb.insets = new Insets(0, -338, -50, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(label, gb);
+
+        //Debt amount on spending side
+        debtS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        gb.insets = new Insets(0, -50, -50, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(debtS, gb);
+        
+        //Car label on spending side
+        label = new JLabel("Car : ");
+        gb.insets = new Insets(0, -338, -100, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(label, gb);
+
+        //Car amount on spending side
+        carS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        gb.insets = new Insets(0, -50, -100, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(carS, gb);
+        
+        //Other label on spending side
+        label = new JLabel("Other : ");
+        gb.insets = new Insets(0, -350, -150, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(label, gb);
+
+        //Other amount on spending side
+        otherS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        gb.insets = new Insets(0, -50, -150, 0);
+        gb.gridx = 1;
+        gb.gridy = 0;
         add(otherS, gb);
-
-        //Drop box on spending side
-        gb.insets = new Insets(0, -315, -80, 0);
+        
+        //Total spending label
+        label = new JLabel("Total Spendings : ");
+        gb.insets = new Insets(0, -290, -200, 0);
         gb.gridx = 1;
         gb.gridy = 0;
-        add(realSpending, gb);
+        add(label, gb);
 
-        //Textfield on the spending side
-        gb.insets = new Insets(0, -150, -80, 0);
+        //Total spending amount
+        spendings = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
+        gb.insets = new Insets(0, -50, -200, 0);
         gb.gridx = 1;
         gb.gridy = 0;
-        add(text2, gb);
-
-        //Add to spending button
-        gb.insets = new Insets(0, 57, -80, 0);
-        gb.gridx = 1;
-        gb.gridy = 0;
-        add(addToSpendings, gb);
+        add(spendings, gb);
 
         //Make chart button on spending side
         gb.insets = new Insets(0, 303, -80, 0);
@@ -350,12 +392,6 @@ public class FinancePanel extends MainPanel {
         gb.gridx = 0;
         gb.gridy = 0;
         add(resetBudget, gb);
-
-        //Reset spending button
-        gb.insets = new Insets(0, -265, 350, 0);
-        gb.gridx = 1;
-        gb.gridy = 0;
-        add(resetSpendings, gb);
 
         //JFrame settings
         setSize(900, 420);

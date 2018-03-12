@@ -47,8 +47,8 @@ public class TransactionsController {
         		
         		String amount = data[0];
         		String date = data[1];
-        		String enterprise = data[2];       		
-        		String category = data[3];
+        		String enterprise = data[2];  
+        		TransactionCategory category = TransactionCategory.fromString(data[3]);
 
         			if (!transactions.containsKey(date)) {
             			transactions.put(date, new TransactionsGroup());
@@ -81,6 +81,18 @@ public class TransactionsController {
 	
 	public Map<String, TransactionsGroup> getTransactionsMapWithDateKeys(){
 		return this.transactions;
+	}
+	
+	public static Transaction[] GetTransactions()
+	{
+		List<Transaction> transactionsList = new ArrayList<Transaction>();
+		
+		for (TransactionsGroup transactionsGroup : transactions.values())
+		{
+			transactionsList.addAll(transactionsGroup.transactions);
+		}
+		
+		return transactionsList.toArray(new Transaction[0]);
 	}
 	
 	public static String getTransacationStringGroupedByDate() {
