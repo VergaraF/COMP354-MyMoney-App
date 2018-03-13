@@ -9,7 +9,7 @@ public class Advice {
 	public static void main(String[] args) {
 
         ArrayList<String> arr = new ArrayList<String>();
-        try (BufferedReader br = new BufferedReader(new FileReader(".//datafiles//Transacations")))
+        try (BufferedReader br = new BufferedReader(new FileReader("..//datafiles//Transacations")))
         {
 
             String sCurrentLine;
@@ -43,7 +43,7 @@ public class Advice {
 		String [] array_arr = arr.toArray(new String[arr.size()]);
 		double [] array_type = {0.00,0.00,0.00,0.00,0.00,0.00,0.00};
 		double double_amount = 0;
-		String advice = "";
+		String advice = "Error!";
 		 for (int i = 0; i < array_arr.length; i++) {
 	         
 	         
@@ -90,22 +90,16 @@ public class Advice {
 			 
 			 System.out.println("");
 			 
-			 if(array_type[0]-totalExpense >= array_type[0]*.2 && sum !=0 && totalExpense !=0) {
-				 advice = ("You should be trying to save money as you have spent about "+ -(totalExpense)/array_type[0]*100 +"% of your income this month. Your income is of "+ array_type[0]+ " yet you have spent "+totalExpense);
+			 if(array_type[0]-totalExpense >= array_type[0]*.2) {
+				 advice = ("You should be trying to save money as you have spent over 80% of your income this month. Your income is of "+ array_type[0]+ " yet you have spent "+totalExpense);
 				 if(array_type[6]<= sum){ 
 					 advice=advice += ("You should be paying your debts rather than spending, as you have "+ array_type[6] +" in debt and "+array_type[5] +" in savings");
 				 }
 				 else {System.out.println("However, you have minimal debt");}
 			 }
-			 else if(array_type[6]<= sum && array_type[6] != 0){ 
+			 else if(array_type[6]<= sum){ 
 				 advice=("You should be paying your debts rather than spending, as you have "+ array_type[6] +"in debt and "+array_type[5] +" in savings");
-				 advice+=("However, you are accumulating money, as your bring in more than you use");	
-			 }
-			 else if ((array_type[6]<=0) && (array_type[0] >= totalExpense) && totalExpense !=0 && sum !=0){
-				 System.out.println("You have no debts and ae using less than you are making, keep at it!");
-			 }
-			 else {
-				 System.out.println("Your statement is not complete");
+				 advice+=("However, you are accumulating money, as your bring in more than you use");				 
 			 }
 			 System.out.println(advice);
 			 			 

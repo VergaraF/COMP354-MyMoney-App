@@ -8,31 +8,50 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class AdviceTest extends TestCase {
-    //homeBudget should be set to nothing, testing the value
+    //homeBudget should be set to 0, testing the value
+    @Test
 
-/*
+
+    
+    
+    
+    
+    
+    public class Testcases {
+        public List<String> myArray() {
+            List<String> ar = new ArrayList<>();
+            ar.add("Customer1");
+            ar.add("Customer2");
+            ar.add("Customer3");
+            return ar;
+        }
+    }
+
     class TestcasesTest {
         @Test
         public void testMyArray() {
-            Advice advice_test = new Advice();
-            assertEquals(Arrays.asList("","","","","","",""), advice_test.myArray(0.00,0.00,0.00,0.00,0.00,0.00,0.00));
-            
-            
-
-            assertArrayEquals(list1.toArray(), list2.toArray());
+            Testcases testcases = new Testcases();
+            assertEquals(Arrays.asList("Customer1", "Customer2", "Customer3"), testcases.myArray());
         }
     }
-    */
-	
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //homeSpending should be set to 0, testing the value
+    @Test
     public void test2(){
-        assertTrue(Advice.homeSpending==0);
+        assertTrue(FinanceController.homeSpending==0);
     }
-    
-    
+    //FP.text1 should be set to "", testing the value
+    @Test
+    public void test3(){
+        assertTrue(FinanceController.FP.text1.equals("156"));
+    }
 }
-
-
-
-
-
 
