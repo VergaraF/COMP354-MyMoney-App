@@ -1,56 +1,41 @@
+package Tests;
 import junit.framework.TestCase;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.junit.Assert;
 import org.junit.Test;
+import Controller.Advice;
 
 public class AdviceTest extends TestCase {
-    //homeBudget should be set to 0, testing the value
+
+    //Tests if input is not of proper length, smaller than 4, it should return error
     @Test
-
-
-    
-    
-    
-    
-    
-    public class Testcases {
-        public List<String> myArray() {
-            List<String> ar = new ArrayList<>();
-            ar.add("Customer1");
-            ar.add("Customer2");
-            ar.add("Customer3");
-            return ar;
-        }
+    public void test1(){
+    	ArrayList<String> list = new ArrayList<String>();
+    	list.add("");
+    	Advice finan_Advice = new Advice();
+    	finan_Advice.savingAdvice(list);
+    	assertEquals(finan_Advice.savingAdvice(list),"Error");
     }
-
-    class TestcasesTest {
-        @Test
-        public void testMyArray() {
-            Testcases testcases = new Testcases();
-            assertEquals(Arrays.asList("Customer1", "Customer2", "Customer3"), testcases.myArray());
-        }
-    }
-
-    
-    
-    
-    
-    
-    
-    
-    //homeSpending should be set to 0, testing the value
-    @Test
+  
+      //Tests if input is a real value and whether or not it is equal to "Error", should fail
     public void test2(){
-        assertTrue(FinanceController.homeSpending==0);
+    	ArrayList<String> list = new ArrayList<String>();
+    	list.add("-230960.00 2016-02-18 Student Loans Debt");
+    	Advice finan_Advice = new Advice();
+    	finan_Advice.savingAdvice(list);
+    	assertEquals(finan_Advice.savingAdvice(list),"Error");
     }
-    //FP.text1 should be set to "", testing the value
-    @Test
+    
+    //Tests for the expected output, given good input
     public void test3(){
-        assertTrue(FinanceController.FP.text1.equals("156"));
+    	ArrayList<String> list = new ArrayList<String>();
+    	list.add("-230960.00 2016-02-18 Student Loans Debt");
+    	Advice finan_Advice = new Advice();
+    	finan_Advice.savingAdvice(list);
+    	assertEquals(finan_Advice.savingAdvice(list),"You should be paying your debts rather than spending, as you have -230960.0in debt and 0.0 in savingsHowever, you are accumulating money, as your bring in more than you use");
     }
 }
+    
+    
+ 
+
 

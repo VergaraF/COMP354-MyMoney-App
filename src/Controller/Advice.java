@@ -42,14 +42,18 @@ public class Advice {
 	
 
 	
-	private void savingAdvice(ArrayList<String> arr){
+	public String savingAdvice(ArrayList<String> arr){
+		
 		String [] array_arr = arr.toArray(new String[arr.size()]);
 		double [] array_type = {0.00,0.00,0.00,0.00,0.00,0.00,0.00};
 		double double_amount = 0;
 		String advice = "";
+		
+		
+		
 		 for (int i = 0; i < array_arr.length; i++) {
 	         
-	         
+	         if (array_arr[i].length()>=4){
 	         String ExpenseType 	= array_arr[i].substring(array_arr[i].length() - 4); //gets the 4 last characters
 	         String StringAmount 	= array_arr[i].substring(0,array_arr[i].indexOf(".") + 3); //gets 2 characters after the .
 	         double_amount = Double.parseDouble(StringAmount);
@@ -76,7 +80,8 @@ public class Advice {
 	        	 array_type[4]+=double_amount;
 	         }
 	         
-	         
+	         }
+	         else {advice="Error";}
 	         
 	      }
 		 	 double sum = array_type[0]+array_type[1]+array_type[2]+array_type[3]+array_type[4]+array_type[5];
@@ -111,11 +116,13 @@ public class Advice {
 			 }
 			 
 			 this.Advice=statement+advice;
-			 System.out.println(advice);
 			 			 
 			 
+			 
+		
+		return advice;
 	}
-
+	
 	
 }
 
