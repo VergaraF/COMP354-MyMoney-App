@@ -30,7 +30,11 @@ public class FinanceController {
     public static float homeBudget = 0;
     public static float foodBudget = 0;
     public static float hobbiesBudget = 0;
-    public static float savingsBudget = 0;
+    public static float healthBudget = 0;
+    public static float transportBudget = 0;
+    public static float entertainmentBudget = 0;
+    public static float debtBudget = 0;
+    public static float carBudget = 0;
     public static float otherBudget = 0;
     public static float totalBudget = 0;
     
@@ -60,15 +64,23 @@ public class FinanceController {
                 homeBudget = 0;
                 foodBudget = 0;
                 hobbiesBudget = 0;
-                savingsBudget = 0;
+                healthBudget = 0;
+                transportBudget = 0;
+                entertainmentBudget = 0;
+                debtBudget = 0;
+                carBudget = 0;
                 otherBudget = 0;
                 totalBudget = 0;
-                FP.budget.setText(String.valueOf(String.format("%.2f", 0.0)));
                 FP.homeB.setText(String.valueOf(String.format("%.2f", 0.0)));
                 FP.foodB.setText(String.valueOf(String.format("%.2f", 0.0)));
                 FP.hobbiesB.setText(String.valueOf(String.format("%.2f", 0.0)));
-                FP.savingsB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.healthB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.transportB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.entertainmentB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.debtB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.carB.setText(String.valueOf(String.format("%.2f", 0.0)));
                 FP.otherB.setText(String.valueOf(String.format("%.2f", 0.0)));
+                FP.budget.setText(String.valueOf(String.format("%.2f", 0.0)));
             }
         });
     }
@@ -78,16 +90,16 @@ public class FinanceController {
      */
     public static void loadSpendings() 
     {
-    	totalSpending = 0;
         homeSpending = 0;
         foodSpending = 0;
         hobbiesSpending = 0;
-        otherSpending = 0;
         healthSpending = 0;
         transportSpending = 0;
         entertainmentSpending = 0;
         debtSpending = 0;
         carSpending = 0;
+        otherSpending = 0;
+        totalSpending = 0;
         
         Transaction[] transactions = TransactionsController.GetTransactions();
         
@@ -111,16 +123,16 @@ public class FinanceController {
         	totalSpending += -transactions[i].amount;
 		}
         
-        FP.spendings.setText(String.valueOf(String.format("%.2f", otherSpending)));
         FP.homeS.setText(String.valueOf(String.format("%.2f", homeSpending)));
         FP.foodS.setText(String.valueOf(String.format("%.2f", foodSpending)));
         FP.hobbiesS.setText(String.valueOf(String.format("%.2f", hobbiesSpending)));
-        FP.otherS.setText(String.valueOf(String.format("%.2f", otherSpending)));
         FP.healthS.setText(String.valueOf(String.format("%.2f", healthSpending)));
         FP.transportS.setText(String.valueOf(String.format("%.2f", transportSpending)));
         FP.entertainmentS.setText(String.valueOf(String.format("%.2f", entertainmentSpending)));
         FP.debtS.setText(String.valueOf(String.format("%.2f", debtSpending)));
         FP.carS.setText(String.valueOf(String.format("%.2f", carSpending)));
+        FP.otherS.setText(String.valueOf(String.format("%.2f", otherSpending)));
+        FP.spendings.setText(String.valueOf(String.format("%.2f", totalSpending)));
     }
 
     /**
@@ -135,7 +147,11 @@ public class FinanceController {
                 FP.budgetChart.addSeries("Home", (homeBudget / totalBudget));
                 FP.budgetChart.addSeries("Food", (foodBudget / totalBudget));
                 FP.budgetChart.addSeries("Hobbies", (hobbiesBudget / totalBudget));
-                FP.budgetChart.addSeries("Savings", (savingsBudget / totalBudget));
+                FP.budgetChart.addSeries("Health", (healthBudget / totalBudget));
+                FP.budgetChart.addSeries("Transport", (transportBudget / totalBudget));
+                FP.budgetChart.addSeries("Entertrainment", (entertainmentBudget / totalBudget));
+                FP.budgetChart.addSeries("Debt", (debtBudget / totalBudget));
+                FP.budgetChart.addSeries("Car", (carBudget / totalBudget));
                 FP.budgetChart.addSeries("Other", (otherBudget / totalBudget));
                 FP.bChart = new XChartPanel(FP.budgetChart);
                 BUDGETCHARTFRAME.add(FP.bChart);
@@ -204,12 +220,44 @@ public class FinanceController {
                             FP.hobbiesB.setText(String.valueOf(String.format("%.2f", hobbiesBudget)));
                         }
                         break;
-                    case "Savings":
+                    case "Health":
                         if (!FP.text1.getText().equals("")) {
-                            savingsBudget += Float.parseFloat(FP.text1.getText());
+                            healthBudget += Float.parseFloat(FP.text1.getText());
                             totalBudget += Float.parseFloat(FP.text1.getText());
                             FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
-                            FP.savingsB.setText(String.valueOf(String.format("%.2f", savingsBudget)));
+                            FP.healthB.setText(String.valueOf(String.format("%.2f", healthBudget)));
+                        }
+                        break;
+                    case "Transport":
+                        if (!FP.text1.getText().equals("")) {
+                            transportBudget += Float.parseFloat(FP.text1.getText());
+                            totalBudget += Float.parseFloat(FP.text1.getText());
+                            FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
+                            FP.transportB.setText(String.valueOf(String.format("%.2f", transportBudget)));
+                        }
+                        break;
+                    case "Entertainment":
+                        if (!FP.text1.getText().equals("")) {
+                            entertainmentBudget += Float.parseFloat(FP.text1.getText());
+                            totalBudget += Float.parseFloat(FP.text1.getText());
+                            FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
+                            FP.entertainmentB.setText(String.valueOf(String.format("%.2f", entertainmentBudget)));
+                        }
+                        break;
+                    case "Debt":
+                        if (!FP.text1.getText().equals("")) {
+                            debtBudget += Float.parseFloat(FP.text1.getText());
+                            totalBudget += Float.parseFloat(FP.text1.getText());
+                            FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
+                            FP.debtB.setText(String.valueOf(String.format("%.2f", debtBudget)));
+                        }
+                        break;
+                    case "Car":
+                        if (!FP.text1.getText().equals("")) {
+                            carBudget += Float.parseFloat(FP.text1.getText());
+                            totalBudget += Float.parseFloat(FP.text1.getText());
+                            FP.budget.setText(String.valueOf(String.format("%.2f", totalBudget)));
+                            FP.carB.setText(String.valueOf(String.format("%.2f", carBudget)));
                         }
                         break;
                     case "Other":
