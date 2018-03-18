@@ -102,9 +102,9 @@ public class TransactionsController {
 		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
 		    
 		   // List<String> transactionEntries = new LinkedList<String>();
-		    temp += "<b>" + key + "\n</b>";
+		    temp += "<b>" + key + "=> </b>";
 		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
-		    		temp += transaction.toString() +"\n";
+		    		temp += transaction.toString() +"<br/>";
 		    }
 		}
 		
@@ -123,11 +123,12 @@ public class TransactionsController {
 		String transactions = "<html>";
 
 		while (s1.hasNextLine()) {
-			transactions += s1.nextLine() + "<br>";
+			transactions += s1.nextLine() + "<br/>";
 		}
 
 		s1.close();
 
+		transactions += "</html>";
 		return transactions;
 	}
 

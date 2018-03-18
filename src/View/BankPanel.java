@@ -1,4 +1,5 @@
 package View;
+import java.awt.Dimension;
 /**
  * COMP 354 Project
  * Group PJ-A
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 
 import Controller.*;
 import Model.Model;
@@ -24,6 +26,8 @@ public class BankPanel extends MainPanel {
 	private JButton budgetButton;
 	private JButton rawButton;
 	private JButton groupByDateButton;
+	private JButton detailsInfo;
+
 
 	private BufferedImage appIcon;
 	private final JLabel bankInfo;
@@ -49,19 +53,28 @@ public class BankPanel extends MainPanel {
 		SavingsInfo = new JLabel(Model.displaySavings());
 		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
 		TransactionsInfo = new JLabel(transactionController.getRawStringTransacations());
+		TransactionsInfo.setMaximumSize(new Dimension(350,700));
+		TransactionsInfo.setPreferredSize(new Dimension(350,700));
 		
 		clsButton = new JButton("Exit");
 		budgetButton = new JButton("Budget");
 		rawButton = new JButton("Raw");
 		groupByDateButton = new JButton("Date");
+		detailsInfo = new JButton("Details");
 		
 		showRawTransacation(rawButton);
 		showTransacationsGroupedByDate(groupByDateButton);
 		closeOnCancelClick(clsButton);
 		goToBudget(budgetButton);
+	//	goToDetailInfo(detailsInfo);
 
 	}
 
+/*	public final void goToDetailInfo(JButton btn) {
+		btn.addActionListener((ActionEvent e) -> {
+			FinanceController.setup();
+		});
+	}*/
 	public final void showRawTransacation(JButton btn) {
 		btn.addActionListener((ActionEvent e) -> {
 			this.TransactionsInfo.setText(transactionController.getRawStringTransacations());
@@ -114,6 +127,8 @@ public class BankPanel extends MainPanel {
 		gb.gridy = 1;
 		add(Savings, gb);
 
+	//	JScrollPane scroller = new JScrollPane(Transactions, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
 		gb.insets = new Insets(5, 5, 5, 5);
 		gb.gridx = 3;
 		gb.gridwidth = 2;
@@ -132,7 +147,7 @@ public class BankPanel extends MainPanel {
 
 		gb.insets = new Insets(55, 5, 5, 5);
 		gb.gridx = 3;
-		gb.gridwidth = 4;
+		gb.gridwidth = 5;
 		gb.gridy = 2;
 		gb.gridheight = 2;
 		add(TransactionsInfo, gb);
