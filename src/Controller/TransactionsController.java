@@ -65,11 +65,13 @@ public class TransactionsController {
 		    
 		    List<String> transactionEntries = new LinkedList<String>();
 		    
-		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
-		    		transactionEntries.add(transaction.toString());
+		    for (Transaction transaction: transactionsPerGivenDate.transactions) {
+		    	
+		    		String encrypted = EncryptionController.Encrypt(transaction.toString());
+		    		transactionEntries.add(encrypted);
 		    }
 		    
-		    Path file = Paths.get(".//datafiles//transactions//" + key +".txt");
+		    Path file = Paths.get(".//datafiles//transactions//" + key);
 
 		    try {
 				Files.write(file, transactionEntries, Charset.forName("UTF-8"));

@@ -46,7 +46,7 @@ public class LogIn {
 			writer = new FileWriter(".//datafiles//login_info", true);
 			if (userInfo != "") {
 				
-				String encryptedString = EncryptionController.Encrypt(userInfo);
+				String encryptedString = EncryptionController.OneWayEncrypt(userInfo);
 				
 				writer.write("\n" + encryptedString);
 			}
@@ -101,7 +101,7 @@ public class LogIn {
 
 		readUserInfo();
 		
-		String encryptedString = EncryptionController.Encrypt(username + "::" + password);
+		String encryptedString = EncryptionController.OneWayEncrypt(username + "::" + password);
 		
 		return login_info.contains(encryptedString);
 	}
