@@ -59,7 +59,7 @@ public class Model {
 		Scanner s1 = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles/savings"));
+			s1 = new Scanner(new FileInputStream(".//datafiles/savings_data"));
 		} catch (FileNotFoundException e) {
 			System.out.print("File could not be found.");
 

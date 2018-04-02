@@ -57,7 +57,7 @@ public class BankPanel extends MainPanel {
 		//[Fabian]
 		System.out.println("Generating data files");
 		
-		transactionController.addTransactions(".//datafiles//Transacations");
+		transactionController.addTransactions(".//datafiles//transactions_data");
 		transactionController.exportTransactionsToFiles();
 		//
 		
@@ -67,7 +67,7 @@ public class BankPanel extends MainPanel {
 		Savings = new JLabel("<HTML><B>Savings</B></HTML>");
 		SavingsInfo = new JLabel(Model.displaySavings());
 		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
-		TransactionsInfo = new JLabel(transactionController.getRawStringTransacations());
+		TransactionsInfo = new JLabel(transactionController.getRawStringTransactions());
 		TransactionsInfo.setMaximumSize(new Dimension(350,700));
 		TransactionsInfo.setPreferredSize(new Dimension(350,700));
 		
@@ -95,8 +95,8 @@ public class BankPanel extends MainPanel {
 		groupByDateButton = new JButton("Date");
 		detailsInfo = new JButton("Details");
 		
-		showRawTransacation(rawButton);
-		showTransacationsGroupedByDate(groupByDateButton);
+		showRawTransaction(rawButton);
+		showTransactionsGroupedByDate(groupByDateButton);
 		closeOnCancelClick(clsButton);
 		goToBudget(budgetButton);
 	//	goToDetailInfo(detailsInfo);
@@ -108,15 +108,15 @@ public class BankPanel extends MainPanel {
 			FinanceController.setup();
 		});
 	}*/
-	public final void showRawTransacation(JButton btn) {
+	public final void showRawTransaction(JButton btn) {
 		btn.addActionListener((ActionEvent e) -> {
-			this.TransactionsInfo.setText(transactionController.getRawStringTransacations());
+			this.TransactionsInfo.setText(transactionController.getRawStringTransactions());
 		});
 	}
 	
-	public final void showTransacationsGroupedByDate(JButton btn) {
+	public final void showTransactionsGroupedByDate(JButton btn) {
 		btn.addActionListener((ActionEvent e) -> {
-			this.TransactionsInfo.setText(transactionController.getTransacationStringGroupedByDate());
+			this.TransactionsInfo.setText(transactionController.getTransactionStringGroupedByDate());
 		});
 	}
 	

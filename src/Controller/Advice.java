@@ -12,7 +12,7 @@ public class Advice {
 	public void execute() {
 
         ArrayList<String> arr = new ArrayList<String>();
-        try (BufferedReader br = new BufferedReader(new FileReader(".//datafiles//Transacations")))
+        try (BufferedReader br = new BufferedReader(new FileReader(".//datafiles//transactions_data")))
         {
 
             String sCurrentLine;
@@ -101,12 +101,12 @@ public class Advice {
 				 advice = ('\n'+"You should be trying to save money as you have spent about "+ -(totalExpense)/array_type[0]*100 +"% of your income this month."+
 						 '\n'+ "Your income is of "+ array_type[0]+ " yet you have spent "+totalExpense);
 				 if(array_type[6]<= sum){ 
-					 advice=advice += ('\n'+"You should be paying your debts rather than spending, as you have "+ array_type[6] +" in debt and "+array_type[5] +" in savings");
+					 advice=advice += ('\n'+"You should be paying your debts rather than spending, as you have "+ array_type[6] +" in debt and "+array_type[5] +" in savings_data");
 				 }
 				 else {System.out.println("However, you have minimal debt");}
 			 }
 			 else if(array_type[6]<= sum && array_type[6] != 0){ 
-				 advice=('\n'+"You should be paying your debts rather than spending, as you have "+ array_type[6] +"in debt and "+array_type[5] +" in savings");
+				 advice=('\n'+"You should be paying your debts rather than spending, as you have "+ array_type[6] +"in debt and "+array_type[5] +" in savings_data");
 				 advice+=('\n'+"However, you are accumulating money, as your bring in more than you use");	
 			 }
 			 else if ((array_type[6]<=0) && (array_type[0] >= totalExpense) && totalExpense !=0 && sum !=0){

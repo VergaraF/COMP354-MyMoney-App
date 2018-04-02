@@ -58,7 +58,7 @@ public class TransactionsController {
 	}
 	
 	public void exportTransactionsToFiles() {
-		boolean createDir = new File(".//datafiles//transactions").mkdirs();
+		boolean createDir = new File(".//datafiles//transactions_data").mkdirs();
 		for (Entry<String, TransactionsGroup> entry : transactions.entrySet()) {
 		    String key = entry.getKey();
 		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
@@ -95,7 +95,7 @@ public class TransactionsController {
 		return transactionsList.toArray(new Transaction[0]);
 	}
 	
-	public static String getTransacationStringGroupedByDate() {
+	public static String getTransactionStringGroupedByDate() {
 		String temp = "<html>";
 		for (Entry<String, TransactionsGroup> entry : transactions.entrySet()) {
 		    String key = entry.getKey();
@@ -111,11 +111,11 @@ public class TransactionsController {
 		temp += "</html>";
 		return temp;
 	}
-	public static  String getRawStringTransacations() {
+	public static  String getRawStringTransactions() {
 		Scanner s1 = null;
 
 		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles//Transacations"));
+			s1 = new Scanner(new FileInputStream(".//datafiles//transactions_data"));
 		} catch (FileNotFoundException e) {
 			System.out.print("file could not be found.");
 

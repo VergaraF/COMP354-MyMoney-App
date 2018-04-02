@@ -28,9 +28,6 @@ public class LogIn {
 		// Compose a user info string to save in file.
 		String newUserInfo = username + "::" + password;
 
-		// Add user details to array list.
-		login_info.add(newUserInfo);
-
 		// write user details to file.
 		saveUserInfo(newUserInfo);
 
@@ -41,13 +38,17 @@ public class LogIn {
 
 	/**
 	 * Method writes user login info to file.
+	 * @throws NoSuchAlgorithmException 
 	 */
 	public static void saveUserInfo(String userInfo) {
 
 		try {
 			writer = new FileWriter(".//datafiles//login_info", true);
 			if (userInfo != "") {
-				writer.write("\n" + userInfo);
+				
+				String encryptedString = EncryptionController.Encrypt(userInfo);
+				
+				writer.write("\n" + encryptedString);
 			}
 
 		} catch (IOException e) {
@@ -71,6 +72,9 @@ public class LogIn {
 	 */
 
 	public static void readUserInfo() {
+		
+		login_info.clear();
+		
 		String lineString = "";
 		BufferedReader reader = null;
 		try {
@@ -95,9 +99,11 @@ public class LogIn {
 	 */
 	public static boolean validateUser(String username, String password) {
 
-		String savedInfo = username + "::" + password;
-
-		return login_info.contains(savedInfo);
+		readUserInfo();
+		
+		String encryptedString = EncryptionController.Encrypt(username + "::" + password);
+		
+		return login_info.contains(encryptedString);
 	}
 
 }

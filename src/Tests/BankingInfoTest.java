@@ -16,7 +16,7 @@ public class BankingInfoTest {
 	//Test that the transaction file is opened and not empty.
 	@Test
 	public void testTransactions() {
-		String transactions = TransactionsController.getRawStringTransacations();
+		String transactions = TransactionsController.getRawStringTransactions();
 		
 		if(transactions!=null)
 		{
@@ -41,7 +41,7 @@ public class BankingInfoTest {
 	//Test we get transactions by date
 	@Test
 	public void testTransactionsByDate() {
-		String transactions = TransactionsController.getTransacationStringGroupedByDate();
+		String transactions = TransactionsController.getTransactionStringGroupedByDate();
 		
 		if(transactions!=null)
 		{
@@ -55,7 +55,7 @@ public class BankingInfoTest {
 	@Test
 	public void testFileCreation() {
 		TransactionsController trans = new TransactionsController();
-		trans.addTransactions(".//datafiles//Transacations");
+		trans.addTransactions(".//datafiles//transactions_data");
 		trans.exportTransactionsToFiles();
 		
 		assertTrue(new File(".//datafiles//transactions//").exists());

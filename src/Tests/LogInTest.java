@@ -36,7 +36,7 @@ public class LogInTest extends TestCase {
 	// contained in
 
 	public void testValidateUser() {
-		boolean test = LogIn.validateUser("Giles", "Giles");
+		boolean test = LogIn.validateUser("test", "test");
 		assertEquals("Failure validating the user information!", test, true);
 
 	}
