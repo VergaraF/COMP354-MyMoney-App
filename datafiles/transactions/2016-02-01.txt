@@ -1,4 +1,4 @@
 -855.0 2016-02-01 JosephSmith home
 57218.95 2016-02-01 Savings-Account save
-1800.99 2016-02-01 Pay income
+1800.99 2016-02-01 Pay other
 -2900.0 2016-02-01 Mortage debt

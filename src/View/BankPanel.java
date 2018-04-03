@@ -38,7 +38,7 @@ public class BankPanel extends MainPanel {
 	private BufferedImage appIcon;
 	private final JLabel bankInfo;
 	private final JLabel Savings;
-	private final JLabel SavingsInfo;
+	private final JTextPane SavingsInfo;
 	private final JLabel Transactions;
 	//michael
 	private final JLabel Advices;
@@ -65,11 +65,10 @@ public class BankPanel extends MainPanel {
 		
 		bankInfo = new JLabel("Banking Information");
 		Savings = new JLabel("<HTML><B>Savings</B></HTML>");
-		SavingsInfo = new JLabel(Model.displaySavings());
 		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
 		TransactionsInfo = new JLabel(transactionController.getRawStringTransacations());
-		TransactionsInfo.setMaximumSize(new Dimension(350,700));
-		TransactionsInfo.setPreferredSize(new Dimension(350,700));
+		TransactionsInfo.setMaximumSize(new Dimension(350,500));
+		TransactionsInfo.setPreferredSize(new Dimension(350,500));
 		
 		//michael
 		Advice finan_Advice = new Advice();
@@ -81,6 +80,8 @@ public class BankPanel extends MainPanel {
 		AdviceInfo.setText(finan_Advice.Advice);
 		//AdviceInfo.setBounds(300, 50, 10, 40);
 		getContentPane().add(AdviceInfo);
+		SavingsInfo = new JTextPane();
+		SavingsInfo.setText(Model.displaySavings());
 		
 		/*
 		JTextPane txtpnHello = new JTextPane();
@@ -186,7 +187,7 @@ public class BankPanel extends MainPanel {
 
 		gb.anchor = GridBagConstraints.NORTH;
 
-		gb.insets = new Insets(5, 5, 5, 5);
+		gb.insets = new Insets(55, 5, 5, 5);
 		gb.gridx = 3;
 		gb.gridwidth = 2;
 		gb.gridy = 2;

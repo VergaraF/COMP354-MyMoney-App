@@ -23,6 +23,7 @@ public class Model {
 	private String userName;
 	private String password;
 	private String inputFileName;
+	private static String savings;
 
 	public Model(String userName, String password) {
 		this.userName = userName;
@@ -54,21 +55,14 @@ public class Model {
 	public void setInputFileName(String inputFileName) {
 		this.inputFileName = inputFileName;
 	}
+	
+	public static void setSavings(String save)
+	{
+		savings = save;
+	}
 
 	public static String displaySavings() {
-		Scanner s1 = null;
-
-		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles/savings"));
-		} catch (FileNotFoundException e) {
-			System.out.print("File could not be found.");
-
-		}
-		String savings = "";
-
-		savings = s1.next();
-		s1.close();
-
+		
 		return savings;
 	}
 
