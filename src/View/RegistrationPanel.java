@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Dimension;
+import java.awt.Frame;
 /**
  * This is a GUI class for user registration. It provides a view for user
  * interaction during registration.
@@ -74,7 +76,7 @@ public class RegistrationPanel extends JFrame {
 		placeButtons();
 
 		// Panel settings
-		setSize(900, 900);
+		this.setMinimumSize(new Dimension(960, 720));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(appIcon);
 		setJMenuBar(menuBar);

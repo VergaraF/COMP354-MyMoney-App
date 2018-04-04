@@ -98,19 +98,18 @@ public class TransactionsController {
 	}
 	
 	public static String getTransactionStringGroupedByDate() {
-		String temp = "<html>";
+		String temp = "";
 		for (Entry<String, TransactionsGroup> entry : transactions.entrySet()) {
 		    String key = entry.getKey();
 		    TransactionsGroup transactionsPerGivenDate = entry.getValue();
 		    
 		   // List<String> transactionEntries = new LinkedList<String>();
-		    temp += "<b>" + key + "=> </b>";
+		    temp += key + "=>";
 		    for (Transaction transaction: transactionsPerGivenDate.transactions) { 	
-		    		temp += transaction.toString() +"<br/>";
+		    		temp += transaction.toString()  + "\n";
 		    }
 		}
 		
-		temp += "</html>";
 		return temp;
 	}
 	public static  String getRawStringTransactions() {
@@ -122,15 +121,14 @@ public class TransactionsController {
 			System.out.print("file could not be found.");
 
 		}
-		String transactions = "<html>";
+		String transactions = "";
 
 		while (s1.hasNextLine()) {
-			transactions += s1.nextLine() + "<br/>";
+			transactions += s1.nextLine() + "\n";
 		}
 
 		s1.close();
 
-		transactions += "</html>";
 		return transactions;
 	}
 

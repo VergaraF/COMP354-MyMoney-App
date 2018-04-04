@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -551,7 +552,7 @@ public class FinancePanel extends MainPanel {
         add(makeChart2, budgetLayout);
 
         //JFrame settings
-        setSize(900, 420);
+        setMinimumSize(new Dimension(960, 720));
         setVisible(true);
         setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

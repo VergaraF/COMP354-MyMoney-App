@@ -1,5 +1,6 @@
 package Controller;
 
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -156,7 +157,7 @@ public class FinanceController {
                 FP.bChart = new XChartPanel(FP.budgetChart);
                 BUDGETCHARTFRAME.add(FP.bChart);
                 BUDGETCHARTFRAME.setVisible(true);
-                BUDGETCHARTFRAME.setSize(900, 400);
+                BUDGETCHARTFRAME.setMinimumSize(new Dimension(960, 720));
             }
         });
     }
@@ -182,7 +183,7 @@ public class FinanceController {
                 FP.sChart = new XChartPanel(FP.spendingChart);
                 SPENDINGSCHARTFRAME.add(FP.sChart);
                 SPENDINGSCHARTFRAME.setVisible(true);
-                SPENDINGSCHARTFRAME.setSize(900, 400);
+                SPENDINGSCHARTFRAME.setMinimumSize(new Dimension(960, 720));
             }
         });
     }

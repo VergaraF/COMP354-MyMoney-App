@@ -27,69 +27,56 @@ import javax.swing.JScrollBar;
  *
  * @author vincent
  */
-public class BankPanel extends MainPanel {
-	private JButton clsButton;
+public class BankPanel extends MainPanel 
+{
+	private JButton exitButton;
 	private JButton budgetButton;
 	private JButton rawButton;
 	private JButton groupByDateButton;
 	private JButton detailsInfo;
 
-
 	private BufferedImage appIcon;
-	private final JLabel bankInfo;
-	private final JLabel Savings;
-	private final JLabel SavingsInfo;
-	private final JLabel Transactions;
-	//michael
-	private final JLabel Advices;
-	private final JTextPane AdviceInfo;
-	//
-	private final JLabel TransactionsInfo;
+	private final JLabel bankInfoTitle;
+	private final JLabel savingsSubtitle;
+	private final JTextPane savingsContent;
+	private final JLabel transactionsSubtitle;
+	private final JLabel adviceSubtitle;
+	private final JTextPane adviceContent;
+	private final JTextPane transactionsContent;
 	
 	TransactionsController transactionController = new TransactionsController();
 
-	public BankPanel() {
+	public BankPanel() 
+	{
 		getContentPane().setLayout(null);
 		
-		
-		
-		
-		//[Fabian]
 		System.out.println("Generating data files");
 		
 		transactionController.addTransactions(".//datafiles//transactions_data");
 		transactionController.exportTransactionsToFiles();
-		//
 		
 		appIcon = chooseIconImage(appIcon, "money.png");
 		
-		bankInfo = new JLabel("Banking Information");
-		Savings = new JLabel("<HTML><B>Savings</B></HTML>");
-		SavingsInfo = new JLabel(Model.displaySavings());
-		Transactions = new JLabel("<HTML><B>Transactions</B></HTML>");
-		TransactionsInfo = new JLabel(transactionController.getRawStringTransactions());
-		TransactionsInfo.setMaximumSize(new Dimension(350,700));
-		TransactionsInfo.setPreferredSize(new Dimension(350,700));
+		bankInfoTitle = new JLabel("Banking Information");
 		
-		//michael
 		Advice finan_Advice = new Advice();
 		finan_Advice.execute();
-		Advices = new JLabel("<HTML><B>Advice</U></HTML>");
-		//AdviceInfo = new JLabel(finan_Advice.Advice);
+		adviceSubtitle = new JLabel("Advice");
+		adviceContent = new JTextPane();
+		adviceContent.setText(finan_Advice.Advice);
+		adviceContent.setEditable(false);
 		
-		AdviceInfo = new JTextPane();
-		AdviceInfo.setText(finan_Advice.Advice);
-		//AdviceInfo.setBounds(300, 50, 10, 40);
-		getContentPane().add(AdviceInfo);
+		savingsSubtitle = new JLabel("Savings");
+		savingsContent = new JTextPane();
+		savingsContent.setText(Model.displaySavings());
+		savingsContent.setEditable(false);
 		
-		/*
-		JTextPane txtpnHello = new JTextPane();
-		txtpnHello.setText("hello");
-		txtpnHello.setBounds(287, 199, 6, 20);
-		getContentPane().add(txtpnHello);*/
-		//
+		transactionsSubtitle = new JLabel("Transactions");
+		transactionsContent = new JTextPane();
+		transactionsContent.setText(transactionController.getRawStringTransactions());
+		transactionsContent.setEditable(false);
 		
-		clsButton = new JButton("Exit");
+		exitButton = new JButton("Exit");
 		budgetButton = new JButton("Budget");
 		rawButton = new JButton("Raw");
 		groupByDateButton = new JButton("Date");
@@ -97,148 +84,158 @@ public class BankPanel extends MainPanel {
 		
 		showRawTransaction(rawButton);
 		showTransactionsGroupedByDate(groupByDateButton);
-		closeOnCancelClick(clsButton);
+		closeOnCancelClick(exitButton);
 		goToBudget(budgetButton);
-	//	goToDetailInfo(detailsInfo);
-
 	}
 
-/*	public final void goToDetailInfo(JButton btn) {
-		btn.addActionListener((ActionEvent e) -> {
-			FinanceController.setup();
-		});
-	}*/
-	public final void showRawTransaction(JButton btn) {
-		btn.addActionListener((ActionEvent e) -> {
-			this.TransactionsInfo.setText(transactionController.getRawStringTransactions());
+	public final void showRawTransaction(JButton btn) 
+	{
+		btn.addActionListener((ActionEvent e) -> 
+		{
+			this.transactionsContent.setText(transactionController.getRawStringTransactions());
 		});
 	}
 	
-	public final void showTransactionsGroupedByDate(JButton btn) {
-		btn.addActionListener((ActionEvent e) -> {
-			this.TransactionsInfo.setText(transactionController.getTransactionStringGroupedByDate());
+	public final void showTransactionsGroupedByDate(JButton btn) 
+	{
+		btn.addActionListener((ActionEvent e) -> 
+		{
+			this.transactionsContent.setText(transactionController.getTransactionStringGroupedByDate());
 		});
 	}
 	
-	public final void goToBudget(JButton btn) {
-		btn.addActionListener((ActionEvent e) -> {
+	public final void goToBudget(JButton btn) 
+	{
+		btn.addActionListener((ActionEvent e) -> 
+		{
 			FinanceController.setup();
 		});
 	}
 
 	@Override
-	public void setupForPanel() {
-
-		setSize(2000, 2000);
-		setResizable(false);
+	public void setupForPanel() 
+	{
+		setMinimumSize(new Dimension(960, 720));
 		setVisible(true);
-		getContentPane().setLayout(new GridBagLayout());
 		placeButtons();
 
 		setIconImage(appIcon);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		bankInfo.setFont(new Font("SansSerif", Font.PLAIN, 28));
-		Transactions.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		Savings.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		//michael
-		Advices.setFont(new Font("SansSerif", Font.PLAIN, 20));
-		//
+		bankInfoTitle.setFont(new Font("SansSerif", Font.PLAIN, 28));
+		transactionsSubtitle.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		savingsSubtitle.setFont(new Font("SansSerif", Font.PLAIN, 20));
+		adviceSubtitle.setFont(new Font("SansSerif", Font.PLAIN, 20));
 	}
-
-	private void placeButtons() {
-		GridBagConstraints gb = new GridBagConstraints();
-
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 2;
-		gb.gridwidth = 3;
-		gb.gridy = 0;
-		gb.weightx = 1;
-		gb.weighty = 1;
-		getContentPane().add(bankInfo, gb);
-
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 1;
-		gb.gridwidth = 2;
-		gb.gridy = 1;
-		add(Savings, gb);
-
-	//	JScrollPane scroller = new JScrollPane(Transactions, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-
-
-		getContentPane().add(Advices, gb);
-		
-		//michael
-
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 3;
-		gb.gridwidth = 2;
-		gb.gridy = 1;
-		getContentPane().add(Savings, gb);
-		//
-		
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 5;
-		gb.gridwidth = 2;
-		gb.gridy = 1;
-		getContentPane().add(Transactions, gb);
-
-		gb.weighty = 10;
-
-		gb.anchor = GridBagConstraints.NORTH;
-
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 3;
-		gb.gridwidth = 2;
-		gb.gridy = 2;
-		getContentPane().add(SavingsInfo, gb);
-
-		gb.insets = new Insets(55, 5, 5, 5);
-		gb.gridx = 5;
-		gb.gridwidth = 4;
-		gb.gridy = 2;
-		gb.gridheight = 2;
-		getContentPane().add(TransactionsInfo, gb);
-		
-		
-		gb.anchor = GridBagConstraints.NORTH;
-		gb.insets = new Insets(55, 5, 5, 5);
-		gb.gridx = 2;
-		gb.gridwidth = 2;
-		gb.gridy = 2;
-		gb.gridheight = 2;
-		getContentPane().add(AdviceInfo, gb);
-		
-		
-		gb.insets = new Insets(5, 1, 5, 5);
-		gb.gridx = 5;
-		gb.gridwidth = 2;
-		gb.gridy = 2;
-		gb.gridheight = 2;
-		getContentPane().add(rawButton, gb);
-		
-		gb.insets = new Insets(5, 150, 5, 5);
-		gb.gridx = 5;
-		gb.gridwidth = 2;
-		gb.gridy = 2;
-		gb.gridheight = 2;
-		getContentPane().add(groupByDateButton, gb);
-
-		gb.anchor = GridBagConstraints.NORTH;
-		gb.weighty = 3;
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 1;
-		gb.gridwidth = 3;
-		gb.gridy = 3;
-		getContentPane().add(clsButton, gb);
-
-		gb.anchor = GridBagConstraints.NORTH;
-		gb.weighty = 3;
-		gb.insets = new Insets(5, 5, 5, 5);
-		gb.gridx = 5;
-		gb.gridwidth = 3;
-		gb.gridy = 3;
-		getContentPane().add(budgetButton, gb);
-		
+	
+	private final int verticalPadding = 5;
+    private final int horizontalPadding = 10;
+	
+	private void placeButtons() 
+	{
+		//GridBagLayout setup
+        setLayout(new GridBagLayout());
+        GridBagConstraints bankPaneLayout = new GridBagConstraints();
+        bankPaneLayout.weightx = 1.0f;
+        bankPaneLayout.weighty = 1.0f;
+        
+      //Bank info Title
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 6;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 0;
+        bankPaneLayout.gridy = 0;
+        add(bankInfoTitle, bankPaneLayout);
+        
+      //Advice subtitle
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 0;
+        bankPaneLayout.gridy = 1;
+        add(adviceSubtitle, bankPaneLayout);
+        
+      //Savings subtitle
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 2;
+        bankPaneLayout.gridy = 1;
+        add(savingsSubtitle, bankPaneLayout);
+        
+      //Transaction subtitle
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 4;
+        bankPaneLayout.gridy = 1;
+        add(transactionsSubtitle, bankPaneLayout);
+        
+      //Transactions button 1
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 1;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 4;
+        bankPaneLayout.gridy = 2;
+        add(rawButton, bankPaneLayout);
+        
+      //Transactions button 2
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 1;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 5;
+        bankPaneLayout.gridy = 2;
+        add(groupByDateButton, bankPaneLayout);
+        
+      //Advice content
+        bankPaneLayout.fill = GridBagConstraints.BOTH;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 1;
+        bankPaneLayout.gridx = 0;
+        bankPaneLayout.gridy = 3;
+        add(adviceContent, bankPaneLayout);
+        
+      //savings content
+        bankPaneLayout.fill = GridBagConstraints.BOTH;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 1;
+        bankPaneLayout.gridx = 2;
+        bankPaneLayout.gridy = 3;
+        add(savingsContent, bankPaneLayout);
+        
+      //transactions content
+        bankPaneLayout.fill = GridBagConstraints.BOTH;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 2;
+        bankPaneLayout.weighty = 1;
+        bankPaneLayout.gridx = 4;
+        bankPaneLayout.gridy = 3;
+        add(transactionsContent, bankPaneLayout);
+        
+      //exit button
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 1;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 1;
+        bankPaneLayout.gridy = 4;
+        add(exitButton, bankPaneLayout);
+        
+      //Budget button
+        bankPaneLayout.fill = GridBagConstraints.CENTER;
+        bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        bankPaneLayout.gridwidth = 1;
+        bankPaneLayout.weighty = 0;
+        bankPaneLayout.gridx = 4;
+        bankPaneLayout.gridy = 4;
+        add(budgetButton, bankPaneLayout);
 		
 		setResizable(true);
 	}

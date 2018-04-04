@@ -1,5 +1,7 @@
 package View;
 
+import java.awt.Dimension;
+
 /**
  *
  * COMP 354 Project
@@ -75,7 +77,7 @@ public class MainPanel extends JFrame {
 		placeButtons();
 
 		// Panel settings
-		setSize(900, 900);
+		setMinimumSize(new Dimension(960, 720));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setIconImage(appIcon);
 		setJMenuBar(menuBar);

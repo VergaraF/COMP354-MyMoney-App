@@ -18,7 +18,7 @@ public class Advice {
             String sCurrentLine;
 
             while ((sCurrentLine = br.readLine()) != null) {
-                arr.add(sCurrentLine);
+                arr.add(sCurrentLine + "\n");
             }
 
         } catch (IOException e) {
