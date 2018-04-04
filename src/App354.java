@@ -30,9 +30,6 @@ public class App354 {
         	}
         	System.out.println("Test equals to null were a failure");
 		
-		  //Test cases for bankPanel class
-         	 BankingInfoTest b1 = new BankingInfoTest();
-         	 b1.testTransactions();
-         	 b1.testSavings();
+		  
 	}
 }
