@@ -87,6 +87,44 @@ public class BankPanel extends MainPanel
 		closeOnCancelClick(exitButton);
 		goToBudget(budgetButton);
 	}
+	
+	public BankPanel(boolean setupForTest) 
+	{
+		getContentPane().setLayout(null);
+		
+		transactionController.addTransactions(".//datafiles//transactions_data");
+		transactionController.exportTransactionsToFiles();
+		
+		appIcon = chooseIconImage(appIcon, "money.png");
+		
+		bankInfoTitle = new JLabel("Banking Information");
+		
+		adviceSubtitle = new JLabel("Advice");
+		adviceContent = new JTextPane();
+		adviceContent.setText("...");
+		adviceContent.setEditable(false);
+		
+		savingsSubtitle = new JLabel("Savings");
+		savingsContent = new JTextPane();
+		savingsContent.setText(Model.displaySavings());
+		savingsContent.setEditable(false);
+		
+		transactionsSubtitle = new JLabel("Transactions");
+		transactionsContent = new JTextPane();
+		transactionsContent.setText(transactionController.getRawStringTransactions());
+		transactionsContent.setEditable(false);
+		
+		exitButton = new JButton("Exit");
+		budgetButton = new JButton("Budget");
+		rawButton = new JButton("Raw");
+		groupByDateButton = new JButton("Date");
+		detailsInfo = new JButton("Details");
+		
+		showRawTransaction(rawButton);
+		showTransactionsGroupedByDate(groupByDateButton);
+		closeOnCancelClick(exitButton);
+		goToBudget(budgetButton);
+	}
 
 	public final void showRawTransaction(JButton btn) 
 	{
