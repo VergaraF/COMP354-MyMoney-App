@@ -224,7 +224,7 @@ public class BankPanel extends MainPanel
         bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
         bankPaneLayout.gridwidth = 1;
         bankPaneLayout.weighty = 0;
-        bankPaneLayout.gridx = 1;
+        bankPaneLayout.gridx = 2;
         bankPaneLayout.gridy = 4;
         add(exitButton, bankPaneLayout);
         
@@ -233,7 +233,7 @@ public class BankPanel extends MainPanel
         bankPaneLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
         bankPaneLayout.gridwidth = 1;
         bankPaneLayout.weighty = 0;
-        bankPaneLayout.gridx = 4;
+        bankPaneLayout.gridx = 3;
         bankPaneLayout.gridy = 4;
         add(budgetButton, bankPaneLayout);
 		

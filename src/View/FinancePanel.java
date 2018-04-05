@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -28,6 +29,7 @@ public class FinancePanel extends MainPanel {
     public JTextField text2;
     
     public JLabel label;
+    public JLabel subtitleLabel;
     
     public JButton resetBudget;
     public JLabel homeB;
@@ -58,6 +60,7 @@ public class FinancePanel extends MainPanel {
     
     private final int verticalPadding = 5;
     private final int horizontalPadding = 10;
+    private final int gutter = 40;
    
     /**
      * Default constructor for FinancePanel class
@@ -124,26 +127,27 @@ public class FinancePanel extends MainPanel {
         GridBagConstraints budgetLayout = new GridBagConstraints();
         
         //Reset budget button
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 1;
+        budgetLayout.fill = GridBagConstraints.CENTER;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
+        budgetLayout.gridwidth = 2;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 0;
         add(resetBudget, budgetLayout);
         
         //Expected spendings label under the reset budget button
-        label = new JLabel("Expected Spendings");
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 4;
+        subtitleLabel = new JLabel("Expected Spendings");
+        subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        budgetLayout.fill = GridBagConstraints.CENTER;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
+        budgetLayout.gridwidth = 2;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 1;
-        add(label, budgetLayout);
+        add(subtitleLabel, budgetLayout);
 
         //Home label on budget side
         label = new JLabel("Home : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 2;
@@ -152,7 +156,7 @@ public class FinancePanel extends MainPanel {
         //Home amount on budget side
         homeB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 2;
@@ -161,7 +165,7 @@ public class FinancePanel extends MainPanel {
         //Food label on budget side
         label = new JLabel("Food : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 3;
@@ -170,7 +174,7 @@ public class FinancePanel extends MainPanel {
         //Food amount on budget side
         foodB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 3;
@@ -179,7 +183,7 @@ public class FinancePanel extends MainPanel {
         //Hobbies label on budget side
         label = new JLabel("Hobbies : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 4;
@@ -188,7 +192,7 @@ public class FinancePanel extends MainPanel {
         //Hobbies amount on budget side
         hobbiesB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 4;
@@ -197,7 +201,7 @@ public class FinancePanel extends MainPanel {
         //Health label on spending side
         label = new JLabel("Health : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 5;
@@ -206,7 +210,7 @@ public class FinancePanel extends MainPanel {
         //Health amount on spending side
         healthB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 5;
@@ -215,7 +219,7 @@ public class FinancePanel extends MainPanel {
         //Transport label on spending side
         label = new JLabel("Transport : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 6;
@@ -224,7 +228,7 @@ public class FinancePanel extends MainPanel {
         //Transport amount on spending side
         transportB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 6;
@@ -233,7 +237,7 @@ public class FinancePanel extends MainPanel {
         //Entertainment label on spending side
         label = new JLabel("Entertainment : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 7;
@@ -242,7 +246,7 @@ public class FinancePanel extends MainPanel {
         //Entertainment amount on spending side
         entertainmentB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 7;
@@ -251,7 +255,7 @@ public class FinancePanel extends MainPanel {
         //Debt label on spending side
         label = new JLabel("Debt : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 8;
@@ -260,7 +264,7 @@ public class FinancePanel extends MainPanel {
         //Debt amount on spending side
         debtB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 8;
@@ -269,7 +273,7 @@ public class FinancePanel extends MainPanel {
         //Car label on spending side
         label = new JLabel("Car : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 9;
@@ -278,7 +282,7 @@ public class FinancePanel extends MainPanel {
         //Car amount on spending side
         carB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 9;
@@ -287,7 +291,7 @@ public class FinancePanel extends MainPanel {
         //Other label on spending side
         label = new JLabel("Other : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 10;
@@ -296,7 +300,7 @@ public class FinancePanel extends MainPanel {
         //Other amount on spending side
         otherB = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 10;
@@ -305,7 +309,7 @@ public class FinancePanel extends MainPanel {
         //Total spending label
         label = new JLabel("Total Budget : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 11;
@@ -314,7 +318,7 @@ public class FinancePanel extends MainPanel {
         //Total spending amount
         budget = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 11;
@@ -322,7 +326,7 @@ public class FinancePanel extends MainPanel {
         
         //Drop box on the budget side
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 0;
         budgetLayout.gridy = 12;
@@ -330,231 +334,231 @@ public class FinancePanel extends MainPanel {
 
         //Textfield on the budget side
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
         budgetLayout.gridwidth = 1;
         budgetLayout.gridx = 1;
         budgetLayout.gridy = 12;
         add(text1, budgetLayout);
 
         //Add to budget button
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 2;
-        budgetLayout.gridy = 12;
+        budgetLayout.fill = GridBagConstraints.BOTH;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
+        budgetLayout.gridwidth = 2;
+        budgetLayout.gridx = 0;
+        budgetLayout.gridy = 13;
         add(addToBudget, budgetLayout);
 
         //Create a chart button on the budget side
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 3;
-        budgetLayout.gridy = 12;
+        budgetLayout.fill = GridBagConstraints.CENTER;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding + gutter);
+        budgetLayout.gridwidth = 2;
+        budgetLayout.gridx = 0;
+        budgetLayout.gridy = 14;
         add(makeChart, budgetLayout);
 
         //
         
         //Real spendings label under the reset spendings button
-        label = new JLabel("Real Spendings");
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 4;
-        budgetLayout.gridx = 4;
+        subtitleLabel = new JLabel("Real Spendings");
+        subtitleLabel.setFont(new Font("SansSerif", Font.PLAIN, 20));
+        budgetLayout.fill = GridBagConstraints.CENTER;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
+        budgetLayout.gridwidth = 2;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 1;
-        add(label, budgetLayout);
+        add(subtitleLabel, budgetLayout);
 
         //Home label on spending side
         label = new JLabel("Home : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 2;
         add(label, budgetLayout);
 
         //Home amount on spending side
         homeS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 2;
         add(homeS, budgetLayout);
 
         //Food label on spending side
         label = new JLabel("Food : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 3;
         add(label, budgetLayout);
 
         //Food amount on spending side
         foodS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 3;
         add(foodS, budgetLayout);
 
         //Hobbies label on spending side
         label = new JLabel("Hobbies : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 4;
         add(label, budgetLayout);
 
         //Hobbies amount on spending side
         hobbiesS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 4;
         add(hobbiesS, budgetLayout);
         
         //Health label on spending side
         label = new JLabel("Health : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 5;
         add(label, budgetLayout);
 
         //Health amount on spending side
         healthS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 5;
         add(healthS, budgetLayout);
         
         //Transport label on spending side
         label = new JLabel("Transport : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 6;
         add(label, budgetLayout);
 
         //Transport amount on spending side
         transportS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 6;
         add(transportS, budgetLayout);
         
         //Entertainment label on spending side
         label = new JLabel("Entertainment : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 7;
         add(label, budgetLayout);
 
         //Entertainment amount on spending side
         entertainmentS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 7;
         add(entertainmentS, budgetLayout);
         
         //Debt label on spending side
         label = new JLabel("Debt : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 8;
         add(label, budgetLayout);
 
         //Debt amount on spending side
         debtS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 8;
         add(debtS, budgetLayout);
         
         //Car label on spending side
         label = new JLabel("Car : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 9;
         add(label, budgetLayout);
 
         //Car amount on spending side
         carS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 9;
         add(carS, budgetLayout);
         
         //Other label on spending side
         label = new JLabel("Other : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 10;
         add(label, budgetLayout);
 
         //Other amount on spending side
         otherS = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 10;
         add(otherS, budgetLayout);
         
         //Total spending label
         label = new JLabel("Total Spendings : ");
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 11;
         add(label, budgetLayout);
 
         //Total spending amount
         spendings = new JLabel(String.valueOf(String.format("%.2f", 0.0)));
         budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
         budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 5;
+        budgetLayout.gridx = 3;
         budgetLayout.gridy = 11;
         add(spendings, budgetLayout);
 
         //Make chart button on spending side
-        budgetLayout.fill = GridBagConstraints.HORIZONTAL;
-        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding, verticalPadding, horizontalPadding);
-        budgetLayout.gridwidth = 1;
-        budgetLayout.gridx = 4;
+        budgetLayout.fill = GridBagConstraints.CENTER;
+        budgetLayout.insets = new Insets(verticalPadding, horizontalPadding + gutter, verticalPadding, horizontalPadding);
+        budgetLayout.gridwidth = 2;
+        budgetLayout.gridx = 2;
         budgetLayout.gridy = 12;
         add(makeChart2, budgetLayout);
 
         //JFrame settings
         setMinimumSize(new Dimension(960, 720));
         setVisible(true);
-        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setIconImage(appIcon);
     }
