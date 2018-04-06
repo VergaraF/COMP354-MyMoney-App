@@ -15,7 +15,7 @@ public class Advice {
 	public void execute() {
 
         ArrayList<String> arr = new ArrayList<String>();
-        try (BufferedReader br = new BufferedReader(new FileReader(".//datafiles//Transacations")))
+        try (BufferedReader br = new BufferedReader(new FileReader(".//datafiles//transactions_data")))
         {
 
             String sCurrentLine;
