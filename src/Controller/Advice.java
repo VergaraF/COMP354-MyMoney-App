@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.DoubleStream;
 
+import Model.Model;
+
 
 public class Advice {
 	
 	public String Advice;
+	public String savings = "";
 	public void execute() {
 
         ArrayList<String> arr = new ArrayList<String>();
@@ -118,7 +121,43 @@ public class Advice {
 			 
 			 this.Advice=statement+advice;
 			 			 
+			 //calculate how long it would take to pay debt
+			 int months = 0;
+			 double debt = array_type[6];
+			 double income = array_type[0];
+			 double moneySaved = 0;
+			 double initialPayment = debt/10*-1;
+			 while(debt<0)
+			 {
+				 debt += income/4;
+				 //charge 10% interest once a year
+					 if(months%12==0) {
+					 debt += debt/10;
+					 moneySaved += initialPayment + debt/10;
+					 }
+					 
+				
+			
+				 ++months;
+			 }
 			 
+			 moneySaved = ((int)(moneySaved *100)/100.0);
+			 			 
+			 if(array_type[6]<0)
+			 {
+				 
+			 savings += "Your debt is costing you "+array_type[6]/10*-1+"$ a year "+
+			 "with a 10% interest rate.\n"+
+			 "It would take you "+months+" months to pay off your debt if "+
+			 "you paid 25% of your current salary towards it every month.\n"
+			 + "This would save you: "+moneySaved+"$ and "+array_type[6]/10*-1+"$"+
+			 " every subsequent year.";
+			 }
+			 else {
+				 savings += "You have no debts.";
+			 }
+			 
+			 Model.setSavings(savings);
 			 
 		
 		return advice;

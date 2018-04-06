@@ -1,3 +1,5 @@
+
+
 package Model;
 
 import java.io.BufferedReader;
@@ -23,6 +25,7 @@ public class Model {
 	private String userName;
 	private String password;
 	private String inputFileName;
+	private static String savings;
 
 	public Model(String userName, String password) {
 		this.userName = userName;
@@ -55,20 +58,8 @@ public class Model {
 		this.inputFileName = inputFileName;
 	}
 
-	public static String displaySavings() {
-		Scanner s1 = null;
-
-		try {
-			s1 = new Scanner(new FileInputStream(".//datafiles/savings_data"));
-		} catch (FileNotFoundException e) {
-			System.out.print("File could not be found.");
-
-		}
-		String savings = "";
-
-		savings = s1.next();
-		s1.close();
-
+public static String displaySavings() {
+		
 		return savings;
 	}
 
@@ -83,6 +74,11 @@ public class Model {
 		// Save user info into file/database
 		saveUserInfo(userName, password);
 
+	}
+	
+	public static void setSavings(String save)
+	{
+		savings = save;
 	}
 
 	/**
@@ -180,3 +176,7 @@ public class Model {
 	}
 
 }
+
+
+
+
