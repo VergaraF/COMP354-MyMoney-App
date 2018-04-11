@@ -28,7 +28,8 @@ public class Advice {
             e.printStackTrace();
         }
         
-        savingAdvice(arr);      
+        savingAdvice(arr); 
+        
         
     }
 	/* test array values
@@ -53,28 +54,32 @@ public class Advice {
 		String advice = "";
 		
 		
-		
 		 for (int i = 0; i < array_arr.length; i++) {
-	         
+			 
 	         if (array_arr[i].length()>=4){
-	         String ExpenseType 	= array_arr[i].substring(array_arr[i].length() - 4); //gets the 4 last characters
+	         String ExpenseType 	= array_arr[i].substring(array_arr[i].length() - 5); //gets the 4 last characters
+	
 	         String StringAmount 	= array_arr[i].substring(0,array_arr[i].indexOf(".") + 3); //gets 2 characters after the .
 	         double_amount = Double.parseDouble(StringAmount);
+	         System.out.println(ExpenseType.equals("Inco"));
+	         System.out.println(ExpenseType);
 	         
-	         if (ExpenseType.equals("Inco")) {
+	         if (ExpenseType.trim().equals("Inco")) {
+	        	 
 	        	 array_type[0]+=double_amount;
 	         }
-	         else if (ExpenseType.equals("Home")) {
+	         else if (ExpenseType.trim().equals("Home")) {
 	        	 array_type[1]+=double_amount;
 	         }
-	         else if (ExpenseType.equals("Food")) {
+	         else if (ExpenseType.trim().equals("Food")) {
 	        	 array_type[2]+=double_amount;
 	         }
-	         else if (ExpenseType.equals("Entr")) {
+	         else if (ExpenseType.trim().equals("Entr")) {
 	        	 array_type[3]+=double_amount;
 	         }
-	         else if (ExpenseType.equals("Save")) {
+	         else if (ExpenseType.trim().equals("Save")) {
 	        	 array_type[5]+=double_amount;
+	        	 array_type[6]= -25900;
 	         }
 	         else if (ExpenseType.equals("Debt")) {
 	        	 array_type[6]+=double_amount;
