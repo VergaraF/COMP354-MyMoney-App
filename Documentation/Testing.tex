@@ -1,0 +1,1384 @@
+%COMP 354 Project
+%Iteration III Documentation: TESTING
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+%Packages
+\usepackage[utf8]{inputenc} %list of tables
+\usepackage{array}
+\usepackage{tabu}
+\usepackage{multirow}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{float}
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customize the layout...
+\lhead{}\chead{}\rhead{}
+
+\title{Project: MyMoney App \newline Iteration 3}
+
+\author{ }
+\date{April 2018}
+\rhead{MyMoneyApp -version 1.2}
+\rfoot{COMP354 - PA-PJ-Winter 2018}
+
+
+\begin{document}
+
+\maketitle
+
+\vspace*{1.5in}
+\begin{table}[htbp]
+
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Name & ID Number \\
+\hline
+Fabian Vergara & 40006707 \\
+\hline
+
+Jean-Loup  & 40006259 \\
+\hline
+Vincent Boivin & 27419694 \\
+
+\hline
+Marc-Antoine Jette-Leger & 27895038 \\
+\hline
+Michael Xu & 27206356 \\
+\hline
+Kisife Giles & 40001926 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Team: PA-PJ}
+\label{table:1}
+\end{table}
+
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+This document marks the end of the third and last phase of the three iterations in the COMP 354 group project. In the course of these three iterations, team PA-PJ worked on building the MyMoneyApp which is simple application to provide financial advice to young professionals.
+
+\subsection{Purpose}
+The objective in this phase of the project is to test the application against the requirements ( for validity), robustness, and reliability.
+To this end, a test plan has been made. The plan presents the test categories used, the components, units or subsystems to be tested and the approach used. However, due to time constrains, not all components could be tested. The tested components are presented in section3, while those excluded are indicated in section 4.
+
+
+
+
+\newpage
+
+\section{Outline of Planned Tests}
+The following tests will be carried out on the MyMoneyApp. Due to time constrains, we will do only the black box testing and exclude white box testing. This means that the test carried out will test for inputs and outputs from the system, but not the code coverage.
+
+\subsubsection{Unit Testing}
+Unit testing tests individual units in the system.Here we test the core functionalists of individual classes for their behaviours. Black box test were carried out on the following methods of the following classes:
+\begin{itemize}
+\item RegistrationTest Class, for user registration.
+    \item LogIn Class, for user login activity.
+    \item Finance Class, for finance activities.
+    \item Advice Class for providing advise to the user.
+    \item BankingInfo Class for bank transactions.
+    \item Display Class for accuracy of information displayed to the user.
+    \item Encryption Class for encryption of user information.
+    
+\end{itemize}
+The details of the tested units is presented in section 5.1 below.
+
+
+\subsubsection{Integration Testing}
+Involves testing how units work together to achieve tasks and responsibilities. Integration testing will be done on the following collaborating classes/units:
+
+\begin{itemize}
+    \item LoginTest Class and BankingInfo Class for collaboration to login and upload the correct user information.
+    \item Registration and Encryption classes.
+    \item Advice class and Display class  
+\end{itemize}
+
+
+\clearpage
+
+\subsubsection{Functional Testing}
+This test's purpose is to ensure the functionality of the software system against any type of input. It is a type of black-box testing, which is a type of testing that disregards the internal program structure and focuses on what the system does, rather than how it is made. To this end, what the system does is first identified then a test to check its functionality and reliability is designed based on the expected behaviour, then fault tolerance(robustness) in the case of invalid input.
+Functional testing has been run on these requirements:
+\begin{itemize}
+    \item Registration and Login
+    \item Data View
+    \item Set Goals
+    \item Data Input Automation
+    \item Advice
+    \item Spending History View
+    \item Dynamic Screen Adjustment
+    \item Savings Feature
+\end{itemize}
+
+\clearpage
+
+\subsubsection{User Interface Testing}
+User interface testing is a testing method that involves finding  defects in the software system through the use of the user interface to in turn, ensure that it meets the System Requirements Specifications.
+\break
+The application provides the following user interfaces which where tested and documented:
+
+
+\begin{itemize}
+    \item The Main Panel
+    \item Registration Panel
+    \item Bank Panel
+    \item Budgeting Panel
+    \item Results Chart
+\end{itemize}
+
+\newpage
+
+\section{Test Inclusions}
+This section specifies the core tests done on the application.
+\subsection{Unit Test}
+
+Unit testing is done with black box only, due to time constraints.
+
+\subsection{Integration Testing}
+The individually tested units are combined and tested to evaluate how they work together.
+\subsection{Functional Testing}
+Test cases are generated to match individual use cases.
+
+\subsection{User Interface Testing}
+Here the GUI is tested against user interaction.
+
+\subsection{Security and Access Control Testing}
+The application is tested against unauthorized access.
+
+\subsection{Load Testing}
+The application is tested against large input files.
+
+\section{Test Exclusions}
+
+The following test cases were deemed necessary for the MyMonetApp but will be excluded due to time constraints. White box/ code coverage test is excluded from the unit tests.
+
+
+\subsection{Data and Database Integrity Testing}
+In this project, simple text files are used in place of a database. Ideally, the application would use a database. In either case, this test would be necessary.
+
+\newpage
+
+
+
+\section{Testing Approach}
+\subsection{Unit testing}
+\\AdviceTest Class : Test Case 1 : It tests to see if the input is smaller than 4 characters
+\\Input : ""
+\\Expected Output : Error
+\\Output : Error
+\\Bug : No
+\\\\AdviceTest Class : Test Case 2 : It tests to see if the input is an advice object
+\\Input : Advice object ("-230960.00 2016-02-18 Student Loans Debt")
+\\Expected Output : ""
+\\Output : ""
+\\Bug : No
+\\\\AdviceTest Class : Test Case 3 : It tests to see if the output is correct
+\\Input : Advice object("-230960.00 2016-02-18 Student Loans Debt")
+\\Expected Output : "You should be paying your debts rather than spending, as you have -230960.0 in debt and 0.0 in savingsHowever, you are accumulating money, as your bring in more than you use"
+\\Output : "You should be paying your debts rather than spending, as you have -230960.0in debt and 0.0 in savings. However, you are accumulating money, as your bring in more than you use"
+\\Bug : No
+\\\\BankingInfoTest Class : Test Case 1 : It test that the transaction file is opened and not empty
+\\Input : ""
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\BankingInfoTest Class : Test Case 2 : It tests that the bank file is opened and not empty
+\\Input : ""
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\BankingInfoTest Class : Test Case 3 : It tests to see that the transactions are sorted by dates
+\\Input : Transactions
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\BankingInfoTest Class : Test Case 4 : It tests to see if the sorted files are created
+\\Input : Created files
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\BankingInfoTest Class : Test Case 5 : It tests to see if the files are saved correctly
+\\Input : Created files
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\DisplayTest Class : Test Case 1 : It tests that the panel for the BankPanel class is of size 960x720
+\\Input : A BankPanel object
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\DisplayTest Class : Test Case 2 : It tests that the panel for the FinancePanel class is of size 960x720
+\\Input : A FinancePanel object
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\DisplayTest Class : Test Case 3 : It tests that the panel for the log in panel is of size 960x720
+\\Input : A MainPanel object
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\DisplayTest Class : Test Case 4 : It test that the panel for the registration panel is of size 960x720
+\\Input : A RegistrationPanel object
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\EncryptionTest Class : Test Case 1 : It tests that a string is properly encrypted
+\\Input : Unencrypted string
+\\Expected Output : Encrypted string
+\\Output : Encrypted string
+\\Bug : No
+\\\\EncryptionTest Class : Test Case 2 : It tests that a string is properly encrypted and decrypted
+\\Input : Encrypted string
+\\Expected Output : Decrypted string
+\\Output : Decrypted string
+\\Bug : No
+\\\\FinanceTest Class : Test Case 1 : It tests that the value homeBudget is set to 1
+\\Input : homeBudget
+\\Expected Output : 1
+\\Output : 0
+\\Bug : Yes
+\\\\FinanceTest Class : Test Case 2 : It tests that the value homeSpending is set to 0
+\\Input : homeSpending
+\\Expected Output : 0
+\\Output : 0
+\\Bug : No
+\\\\FinanceTest Class : Test Case 3 : It tests that the value of text1 is set to ""
+\\Input : text1
+\\Expected Output : ""
+\\Output : ""
+\\Bug : No
+\\\\LogInTest Class : Test Case 1 : It tests for the size of the list containing user information
+\\Input : Size of the list
+\\Expected Output : Size of the list
+\\Output : Size of the list
+\\Bug : No
+\\\\LogInTest Class : Test Case 2 : It tests that the size of the list is greater than 0
+\\Input : Size of the list
+\\Expected Output : true
+\\Output : true
+\\Bug : No
+\\\\LogInTest Class : Test Case 3 : It tests to see if the input is contained in the user information list
+\\Input : test data
+\\Expected Output : "Failure validating the user information!"
+\\Output : "Failure validating the user information!"
+\\Bug : No
+
+\break
+
+\subsection{Integration Testing}
+
+
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & INTG-1 \\
+\hline
+Test Name  & Login and BankInfo Integration \\
+\hline
+Test Suite  ID & INTG \\
+\hline
+Test preconditions & An existing user account and bank transactions \\
+\hline
+Test Steps & Case 1: Log in to user's account \\
+
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Bank transactions uploaded should belong to corresponding user account  \\
+\hline
+  Case 2 &  Registration panel should still be displayed  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  & Corresponding bank transactions were loaded.  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Integration Test 1}
+\end{table}
+\label{table:2a -intg}
+
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & INTG-1 \\
+\hline
+Test Name  & Registration and Encryption \\
+\hline
+Test Suite  ID & INTG \\
+\hline
+Test preconditions & Username and password should not match an existing account in the system. \\
+\hline
+Test Steps & Case 1: Create a new account and upload bank transactions. \\
+
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  User information and bank transactions should be encrypted after registration. \\
+
+\hline
+Actual Results & ---\\
+\hline
+Case 1  & User login information and bank transactions were encrypted.  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Integration Test 2}
+\end{table}
+\label{table:2a -intg2}
+
+\clearpage
+
+\subsection{Functional Testing}
+
+These tests aim to ensure the functionality and presence of the requirements that have been put forth in the SRS document.
+
+\subsubsection{Registration Functional tests}
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-1 \\
+\hline
+Test Name  & Username should be unique \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & Username must not exist beforehand \\
+\hline
+Test Steps & Case 1: Click on registration \\
+\hline
+  & Case 2: Input username that exists already  \\
+\hline
+  & Case 3: Input a password  \\
+\hline
+  & Case 4: Click register account button  \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Invalid username warning should appear  \\
+\hline
+  Case 2 &  Registration panel should still be displayed  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  Invalid username warning appears  \\
+\hline
+Case 2 &  Registration panel still be displayed  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Registration functional test 1}
+\end{table}
+\label{table:2a}
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-2 \\
+\hline
+Test Name  & Username, Password are mandatory \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & The user cannot sign up without providing a username and a password \\
+\hline
+Test Steps & Case 1: Click on registration \\
+\hline
+  & Case 2: Leave everything blank  \\
+\hline
+  & Case 3: click on Register Account \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Please enter username, password warning should appear  \\
+\hline
+Case 2 &  Registration panel should still be displayed  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  please enter username,password warning appears  \\
+\hline
+  Case 2 &  Registration panel still displayed  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Registration Functional Test 2}
+\end{table}
+\label{table:2b}
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-3 \\
+\hline
+Test Name  & Account is successfully created \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & --- \\
+\hline
+Test Steps & Case 1: Click on registration \\
+\hline
+  & Case 2: Enter an unused username  \\
+\hline
+  & Case 3: click on Register Account \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Registration page should close\\
+\hline
+Case 2 &  User is back to the login page  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  Registration page closes\\
+\hline
+Case 2 &  User is back to the login page  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Registration Functional Test 3}
+\end{table}
+\label{table:2c}
+
+
+\newpage
+
+\subsubsection{Login Functional tests}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-4 \\
+\hline
+Test Name  & User logs in properly \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has an account registered in the system \\
+\hline
+Test Steps & Case 1**: Input username and password in the appropriate boxes \\
+\hline
+  & Case 2**: Click on the login button \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case**: & Expected Results\\
+\hline
+Case 1**:  &  Login page should disappear\\
+\hline
+Case 2: &  User is at the main bank panel  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  Login page disappears\\
+\hline
+Case 2 &  User is at the bank panel page  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1, Case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Login Functional Test 1}
+Content\footnote{** Authentication test may be applicable in section 5.}
+\end{table}
+\label{table:2d}
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-5 \\
+\hline
+Test Name  & Username/Password pair invalid/nonexistent \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & --- \\
+\hline
+Test Steps & Case 1: Input username and password in the appropriate boxes \\
+\hline
+  & Case 2: Click on the login button \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1**:  &  Invalid username/password should appear\\
+\hline
+Case 2**: &  User is still at the login page  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1**:  &  invalid username/password appears\\
+\hline
+Case 2 &  User is at the login page  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1, Case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Login Functional Test 2}
+Content\footnote{** Authentication test may be applicable in section 5.}
+\end{table}
+\label{table:2e}
+
+\clearpage
+
+\subsubsection{Data View}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-6 \\
+\hline
+Test Name  & Data view \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User must have a valid pair of username/password \\
+\hline
+Test Steps & Case 1: Input username and password in the appropriate boxes \\
+\hline
+  & Case 2: Click on the login button \\
+\hline
+Test post conditions & User is able to view his financial data \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  User logs in successfully\\
+\hline
+Case 2 &  User is at the main panel, with the data ready to be viewed  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  User logs in successfully\\
+\hline
+Case 2 &  User is at the main panel, with the data ready to be viewed  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1, Case 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Transactions View Functional Test}
+\end{table}
+\label{table:2f}
+
+\clearpage
+
+\subsubsection{Set Goals}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-7 \\
+\hline
+Test Name  & Data view \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: Click on budget\\
+\hline
+  & Case 2: Input the amount for each category \\
+ \hline
+  & Case 3: Click on add to budget \\
+\hline
+Test post conditions & User should see his budget increased and can have access to a chart \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  User gets to the budget page\\
+\hline
+Case 2 &  User inputs the required information  \\
+\hline
+Case 3 &  User has access to a chart of his spending  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  User gets to the budget page\\
+\hline
+Case 2 &  User inputs the required information  \\
+\hline
+Case 3 &  User has access to a chart of his spendings  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1, Case 2,Case 3\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Set Goals Functional Test}
+\end{table}
+\label{table:2g}
+
+\clearpage
+
+\subsubsection{Data Input Automation}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-8 \\
+\hline
+Test Name  & Data view \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: The user's financial spending is displayed\\
+\hline
+Test post conditions & User is able to see his spending \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  User is able to see his spending\\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  User is able to see his spending\\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Data Input Automation Functional Test}
+\end{table}
+\label{table:2h}
+
+\clearpage
+
+\subsubsection{Advice Generation}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-9 \\
+\hline
+Test Name  & Advice generation based on input \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: The user's advice on his spending is displayed\\
+\hline
+Test post conditions & User is able to see his advice \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  User is able to see his advice\\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  User is able to see his advice\\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Advice Generation Functional Test}
+\end{table}
+\label{table:2i}
+
+\clearpage
+
+\subsubsection{Spending History View}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-10 \\
+\hline
+Test Name  & Able to sort the spending based on time \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: Click on date\\
+\hline
+Test post conditions & The spending history has been sorted by date \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Spending history is sorted by date\\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  Spending history is sorted by date\\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Spending History View Functional Test}
+\end{table}
+\label{table:2j}
+
+\clearpage
+
+\subsubsection{Dynamic Screen Adjustment Test}
+This test case tests the use case 5; the application should dynamically adjust the screen settings to suit the host device settings.
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-10 \\
+\hline
+Test Name  & Dynamic change of screen size \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: Click on date\\
+\hline
+Test post conditions & The screen size adjusts to fit the information \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  The screen size adjusts to fit the information\\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  The screen size adjusts to fit the information\\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Dynamic Screen Adjustment Functional Test}
+\end{table}
+\label{table:2k}
+
+\clearpage
+
+\subsubsection{Savings Advice Functional Test}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & FUNC-10 \\
+\hline
+Test Name  & Saving information is given(separate from regular advice) \\
+\hline
+Test Suite  ID & FUNC \\
+\hline
+Test preconditions & User has logged into a pre-existing account and is now on the main bank panel \\
+\hline
+Test Steps & Case 1: Saving advice is displayed in the middle column\\
+\hline
+Test post conditions &  Saving advice is displayed in the middle column \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1  &  Saving advice is displayed in the middle column\\
+\hline
+Actual Results & ---\\
+\hline
+Case 1  &  Saving advice is displayed in the middle column\\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Savings Advice Functional Test}
+\end{table}
+\label{table:2l}
+
+\break
+
+
+
+\subsection{User Interface Testing}
+
+Each user interface was tested for functionality against user interactions. The test for each interface is presented in tabular form below.
+
+\subsubsection{Main panel interface Test}
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & GUI-1 \\
+\hline
+
+Test Name  & Main Panel Test \\
+\hline
+Test Suite  ID& GUI \\
+
+\hline
+Test preconditions & Panel must be displayed \\
+\hline
+Test Steps & Case 1*: Click to close panel \\
+\hline
+Case 2*  &  Click panel window to maximize  \\
+\hline
+Case 3*  &  Click panel window to minimize  \\
+\hline
+  Case 4 &  Registration panel should be displayed  \\
+\hline
+  Case 5 &  Login activity should be initiated \\
+\hline
+ Case 6 &  Return to main panel  \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+\hline
+Case 1*  &  Panel should close  \\
+\hline
+Case 2*  &  Panel window can be maximized  \\
+\hline
+Case 3*  &  Panel window can be minimized  \\
+\hline
+  Case 4 &  Registration panel should be displayed  \\
+\hline
+  Case 5 &  Login activity should be initiated \\
+\hline
+ Case 6 &  Return to main panel  \\
+\hline
+
+Actual Results & ---\\
+\hline
+Case 1*  &  Panel window closed  \\
+\hline
+Case 2*  &  Panel window maximized  \\
+\hline
+Case 3*  &  Panel window minimized  \\
+\hline
+  Case 4 &  Registration panel displayed  \\
+\hline
+  Case 5 &  Login activity initiated  \\
+\hline
+ Case 6 &  Return to main panel  \\
+\hline
+
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2 case 3 case 4 case 5 case 6\\
+\hline
+
+\end{tabular}
+\end{center}
+\caption{GUI Test: Main Panel Interface}
+\end{table}
+Content\footnote{* Signifies tests common to all panels}
+\label{table:2m}
+
+\newpage
+
+\subsubsection{Registration Interface Test}
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & GUI-2 \\
+\hline
+Tester  & Coder 1 \\
+\hline
+
+Test Name  & Registration Panel Test \\
+\hline
+Test Suite  ID& GUI \\
+
+\hline
+Test preconditions & Panel must be displayed \\
+\hline
+Test Steps & Case 1: Click to close panel \\
+\hline
+  & Case 2: User name field  \\
+\hline
+  & Case 3: Confirm password field  \\
+\hline
+  & Case 4: Registration button  \\
+\hline
+& Case 5: Click cancel button  \\
+\hline
+
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+\hline
+Case 1  &  Panel should close  \\
+\hline
+  Case 2 &  User name field should be displayed  \\
+\hline
+  Case 3 & Password field should be displayed  \\
+\hline
+ Case 4 & Confirm password field should be displayed  \\
+\hline
+Case 5 & Registration activity  \\
+\hline
+
+Actual Results & ---\\
+\hline
+\hline
+Case 1  &  Panel close as expected  \\
+\hline
+  Case 2 &  User name field displayed  \\
+\hline
+  Case 3 & Password field displayed  \\
+\hline
+ Case 4 & Confirm password field displayed  \\
+\hline
+Case 5 & Registration activity initiated  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2 case 3 case 4 case 5 case 6\\
+\hline
+Remarks & A remark if necessary \\
+\hline
+
+\end{tabular}
+\end{center}
+
+\caption{GUI Test: Registration Panel Interface}
+\end{table}
+Content\footnote{* Cases in main panel interface tested.}
+\label{table:3xxx}
+
+\newpage
+
+\subsubsection{Bank Panel Interface Test}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & GUI-3 \\
+\hline
+Tester  & Coder 2 \\
+\hline
+
+Test Name  & Bank Panel Test \\
+\hline
+Test Suite  ID& GUI \\
+
+\hline
+Test preconditions & Panel must be displayed \\
+\hline
+Test Steps & Case 1: Advice text area should displayed \\
+\hline
+  & Case 2: Savings text area should displayed  \\
+\hline
+  & Case 3: Transactions text area should displayed  \\
+\hline
+  & Case 4: Click on Raw button  \\
+\hline
+& Case 5: Click date button  \\
+\hline
+& Case 6: Click exit button  \\
+\hline
+& Case 7: Click budget button  \\
+\hline
+
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1 &     Advice should be displayed in advice text area  \\
+\hline
+Case 2 &  Savings should be displayed on savings area should displayed  \\
+\hline
+Case 3  &  Transactions should be displayed on text area should displayed  \\
+\hline
+Case 4  &  Listener event should be initiated for raw data  \\
+\hline
+Case 5 &  Listener event should be initiated and date displayed  \\
+\hline
+Case 6 &  Application should exit  \\
+\hline
+Case 7 &  User should be taken to budget panel  \\
+\hline
+
+Actual Results & ---\\
+\hline
+Case 1 & Advice is displayed in advice text area  \\
+ \hline
+Case 2 & Savings are displayed on savings area should displayed  \\
+\hline
+Case 3 &  Transactions are displayed on text area should displayed  \\
+\hline
+ Case 4 &  raw date data is presented \\
+\hline
+Case 5 &  Transactions are displayed by date  \\
+\hline
+Case 6 &  Application terminates \\
+\hline
+Case 7 &  User is taken to budget panel  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2 case 3 case 4 case 5 case 6 case 7\\
+\hline
+
+
+\end{tabular}
+\end{center}
+
+\caption{GUI Test: Bank Panel Interface}
+Content\footnote{* Cases in main panel interface tested.}
+\end{table}
+\label{table:3xxxxx}
+
+
+\clearpage
+
+\subsubsection{Budget Panel Interface Test}
+This interface should enable a user to set a budget.
+
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & GUI-4 \\
+\hline
+Tester  & Coder 1 \\
+\hline
+
+Test Name  & Budget Panel Test \\
+\hline
+Test Suite  ID& GUI \\
+
+\hline
+ Test preconditions & Panel must be displayed \\
+\hline
+Test Steps & Case 1: Budget text area should displayed \\
+\hline
+  & Case 2: Categories drop-down window should displayed  \\
+\hline
+  & Case 3: Budget entry fields should displayed  \\
+\hline
+  & Case 4: Click on "Set" button  \\
+\hline
+& Case 5: Click "Cancel" button  \\
+\hline
+& Case 6: Click exit button  \\
+\hline
+& Case 7: Click the pie chart button\\
+\hline
+
+Test post conditions & --- \\
+\hline
+Test Case &Expected Results\\
+\hline
+Case 1 & Budget setting area should be displayed in advice text area  \\
+\hline
+Case 2 &  Categories drop-down window should be displayed  \\
+\hline
+Case 3  &  Budget entry fields should be displayed  \\
+\hline
+Case 4  &  Listener event should be initiated for budget activity  \\
+\hline
+Case 5 &  Listener event should be initiated and user returned to main panel \\
+\hline
+Case 6 &  Application should exit  \\
+\hline
+Case 7 &  User should be taken to pie chart panel  \\
+\hline
+
+Actual Results & ---\\
+\hline
+Case 1 & Budget area displayed as expected  \\
+ \hline
+Case 2 & Budget categories presented as expected  \\
+\hline
+Case 3 &  Budget entry fields displayed  \\
+\hline
+ Case 4 &  Budget activity started \\
+\hline
+Case 5 &  Transactions are displayed by date  \\
+\hline
+Case 6 &  Application terminates \\
+\hline
+Case 7 &  User is taken to pie chart panel  \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 case 2 case 3 case 4 case 5 case 6 case 7\\
+\hline
+
+
+\end{tabular}
+\end{center}
+
+\caption{GUI Test: Budget Panel Interface}
+Content\footnote{* Cases in main panel interface apply.}
+\end{table}
+\label{table:}
+
+
+
+
+\clearpage
+
+
+\subsection{Security and Access Control Testing}
+
+\begin{table}[htbp]
+%\caption{Team: PA-PJ}
+\begin{center}
+\begin{tabular}{|l | l|}
+\hline
+Test Attribute & Test Specifications \\
+\hline
+Test ID & SEC-1 \\
+\hline
+Test Name  & Security Test \\
+\hline
+Test Suite  ID& Sec \\
+\hline
+ Test preconditions & --- \\
+\hline
+Test Steps & Case 1: Click on register \\
+\hline
+Test Steps & Case 2: Input username/password \\
+\hline
+Test post conditions & --- \\
+\hline
+Test Case & Expected Results\\
+\hline
+Case 1 & All data is encrypted  \\
+\hline
+Actual Results & ---\\
+\hline
+Case 1 & Data is encrypted  datafile \textbackslash login\_info \\
+\hline
+Test Results & ---\\
+\hline
+Failed Tests & None\\
+\hline
+Passed Tests & Case 1 \\
+\hline
+\end{tabular}
+\end{center}
+
+\caption{Security and access Test}
+Content\footnote{* Cases in main panel interface apply.}
+\end{table}
+\label{table:}
+
+\newpage
+
+
+
+
+
+\subsection{Load Testing}
+
+Loading large files fails in that the Bank Bank Panel GUI can not accommodate all of the information. 
+\newline MyMoneyApp algorithm handles different loads of different magnitudes but fails to display everything correctly. This test puts in evidence a cosmetic flaw of the system that needs to be addressed.
+
+Remark: A scrollable GUI could solve this problem.
+
+
+
+
+
+\section{Description of Input Files}
+
+MyMoneyApp receives data stream from bank institutions in the form of text files with extension .txt. There is one text file for every bank data stream that will be provided from MyMoneyApp users' banks. However, for this iteration and to run most of the tests, the development team only uses one input file. \newline 
+This input file is extremely important as most of MyMoneyApp functionality depends on such. Without this file, no useful information is displayed to a given user, and the user is informed that a data file is needed to be provided in order to enjoy MyMoneyApp features. \newline\newline
+
+\textbf{Transactions\textunderscore data.txt} corresponds to the input file name and its respective extension. This input file also benefits from MyMoneyApp encryption. In there, the format is as
+follow: \newline \centerline{amount date company expenseType}
+\newline\centerline{-1000000 2018-04-08 MyMoneyAppTeam Business}
+\newline\newline The input file uses white spaces as delimiter and new line characters as different transaction input (line). MyMoneyApp is designed to ignore white spaces at the beginning of each transaction input within the file input and white spaces at the end before a new line character is found. 
+\newline \newline
+Other input files are generated as the user registers and logins for the first time. However, those input files are independent of the user and are used as private persistent data storage used within the app. Those other input files are text files (.txt extension) as well and are named as follow: \textbf{user\textunderscore not\textunderscore found.txt} and \textbf{login\textunderscore info.txt}\newline\newline\newline\textbf{user\textunderscore not\textunderscore found.txt} is independent of the user and is only used as a string input to show an error to the user as he enters an incorrect login information. The user is prompted to create an account or enter his correct credentials. This input file is used to change the message MyMoneyApp will show to the user on wrong logging without needing intervention of the development team.\newline\newline\newline\textbf{login\textunderscore info.txt} is independent of the user as well. This persistent data file is used to store login information of the user. login\textunderscore info.txt benefits from MyMoneyApp encryption to ensure that user login data is privately secured from unscrupulous hands.
+
+\section{Description of Output Files}
+
+MyMoneyApp generates text files from the \textbf{transactions\textunderscore data.txt} input file. The output files generated by the application reflect its internal data manipulation algorithm.\newline The MyMoneyApp algorithm analyzes \textbf{transactions\textunderscore data.txt} line by line and models each transaction into a transaction java object. Each transaction object is then stored in a hashtable, where its key is its date, and each key corresponds to a list of transactions that are added as many transactions might have the same date. Then the algorithm is able to organize transactions by date (where it happens to be a key on a hashtable of transactions lists). Finally, the algorithm exports each list with its respective key as a file, where the file name is its key (date) and the content of the list is the content of its respective file. This is achieve to use those files a cache and manipulate them easily as the user is able to change values.
+\newline\newline The user is able to test this feature as those files are publicly available. However, internally, MyMoneyApp development team ensures functionality by running unit tests of this algorithm as follows: Insert a new transaction file with one transaction, let the algorithm do its processing, then check if there exists a file with the respective transaction date and its file content matches the new transaction file line input (which is a transaction by itself as well). \newline Users are able to test this by providing their transaction file and seeing if its corresponding transaction file by date is generated. Both files are stored in the same root folder. The user is not able to perform any steps in between, as the algorithm is fully automated and is not expecting any interaction with the user by any means.
+
+\clearpage
+
+\section{References}
+Roger S Pressman, Software Engineering: A Practitioner's Approach, 7th edition, McGraw-Hill
+
+\appendix
+\clearpage
+
+\listoftables
+
+
+
+
+
+\end{document}
+
+
